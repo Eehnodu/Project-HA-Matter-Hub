@@ -1,0 +1,203 @@
+views:
+  - type: sidebar
+    path: security
+    cards:
+      - square: false
+        type: grid
+        columns: 4
+        cards:
+          - type: vertical-stack
+            cards:
+              - type: iframe
+                url: >-
+                  https://ipcamlive.com/player/player.php?alias=broadwaycam&autoplay=1&mute=0
+                aspect_ratio: '16:9'
+            title: 정문1
+          - type: vertical-stack
+            cards:
+              - type: iframe
+                url: >-
+                  https://ipcamlive.com/player/player.php?alias=beachcam&autoplay=1&mute=0
+                aspect_ratio: '16:9'
+            title: 정문2
+          - type: vertical-stack
+            cards:
+              - type: iframe
+                url: >-
+                  https://ipcamlive.com/player/player.php?alias=tamarindos&autoplay=1&mute=0
+                aspect_ratio: '16:9'
+            title: 정문3
+          - type: vertical-stack
+            cards:
+              - type: iframe
+                url: >-
+                  https://ipcamlive.com/player/player.php?alias=parkcam&autoplay=1&mute=0
+                aspect_ratio: '16:9'
+            title: 후문1
+          - type: vertical-stack
+            cards:
+              - type: iframe
+                url: >-
+                  https://ipcamlive.com/player/player.php?alias=62a24340ea224&autoplay=1&mute=0
+                aspect_ratio: '16:9'
+            title: 좌측1
+          - type: vertical-stack
+            cards:
+              - type: iframe
+                url: >-
+                  https://ipcamlive.com/player/player.php?alias=sagradafamilia&autoplay=1&mute=0
+                aspect_ratio: '16:9'
+            title: 좌측2
+          - type: vertical-stack
+            cards:
+              - type: iframe
+                url: >-
+                  https://ipcamlive.com/player/player.php?alias=cityviewcam&autoplay=1&mute=0
+                aspect_ratio: '16:9'
+            title: 우측1
+          - type: vertical-stack
+            cards:
+              - type: iframe
+                url: >-
+                  https://g0.ipcamlive.com/player/player.php?alias=5750a365b7d90&autoplay=1&mute=0
+                aspect_ratio: '16:9'
+            title: 우측2
+      - type: custom:flex-table-card
+        title: 출입 기록
+        entities:
+          include:
+            - sensor.employee_1
+            - sensor.employee_2
+            - sensor.employee_3
+            - sensor.employee_4
+            - sensor.employee_5
+            - sensor.employee_6
+            - sensor.employee_7
+            - sensor.employee_8
+            - sensor.employee_9
+            - sensor.employee_10
+            - sensor.employee_11
+            - sensor.employee_12
+            - sensor.employee_13
+            - sensor.employee_14
+            - sensor.employee_15
+            - sensor.employee_16
+            - sensor.employee_17
+            - sensor.employee_18
+            - sensor.employee_19
+            - sensor.employee_20
+        columns:
+          - data: name
+            name: 이름
+            align: center
+          - data: department
+            name: 소속
+            align: center
+          - data: entry_time
+            name: 출입 기록
+            align: center
+          - data: exit_time
+            name: 퇴근 기록
+            align: center
+          - data: entry_location
+            name: 출입 위치
+            align: center
+        grid_options:
+          columns: 48
+          rows: auto
+      - title: 잠금
+        type: entities
+        entities:
+          - entity: lock.front_lock1
+            name: 정문1
+            card_mod:
+              style: |
+                :host {
+                  --card-mod-icon-color:
+                    {% if is_state('lock.front_lock1', 'locked') %}
+                    green;
+                    {% else %}
+                    red;
+                    {% endif %};
+          - entity: lock.front_lock2
+            name: 정문2
+            card_mod:
+              style: |
+                :host {
+                  --card-mod-icon-color:
+                    {% if is_state('lock.front_lock2', 'locked') %}
+                    green;
+                    {% else %}
+                    red;
+                    {% endif %};
+          - entity: lock.front_lock3
+            name: 정문3
+            card_mod:
+              style: |
+                :host {
+                  --card-mod-icon-color:
+                    {% if is_state('lock.front_lock3', 'locked') %}
+                    green;
+                    {% else %}
+                    red;
+                    {% endif %};
+          - entity: lock.back_lock1
+            name: 후문1
+            card_mod:
+              style: |
+                :host {
+                  --card-mod-icon-color:
+                    {% if is_state('lock.back_lock1', 'locked') %}
+                    green;
+                    {% else %}
+                    red;
+                    {% endif %};
+          - entity: lock.right_lock1
+            name: 우측1
+            card_mod:
+              style: |
+                :host {
+                  --card-mod-icon-color:
+                    {% if is_state('lock.right_lock1', 'locked') %}
+                    green;
+                    {% else %}
+                    red;
+                    {% endif %};
+          - entity: lock.right_lock2
+            name: 우측2
+            card_mod:
+              style: |
+                :host {
+                  --card-mod-icon-color:
+                    {% if is_state('lock.right_lock2', 'locked') %}
+                    green;
+                    {% else %}
+                    red;
+                    {% endif %};
+          - entity: lock.left_lock1
+            name: 좌측1
+            card_mod:
+              style: |
+                :host {
+                  --card-mod-icon-color:
+                    {% if is_state('lock.left_lock1', 'locked') %}
+                    green;
+                    {% else %}
+                    red;
+                    {% endif %};
+          - entity: lock.left_lock2
+            name: 좌측2
+            card_mod:
+              style: |
+                :host {
+                  --card-mod-icon-color:
+                    {% if is_state('lock.left_lock2', 'locked') %}
+                    green;
+                    {% else %}
+                    red;
+                    {% endif %};
+        view_layout:
+          position: sidebar
+        state_color: false
+    badges: []
+    title: 보안

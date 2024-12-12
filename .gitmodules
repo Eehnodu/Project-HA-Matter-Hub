@@ -1,0 +1,24 @@
+[submodule "core"]
+	path = core
+	url = https://github.com/home-assistant/core.git
+[submodule "third_party/mini-graph-card"]
+	path = third_party/mini-graph-card
+	url = https://github.com/kalkih/mini-graph-card
+[submodule "third_party/flex-table-card"]
+	path = third_party/flex-table-card
+	url = https://github.com/custom-cards/flex-table-card.git
+[submodule "third_party/button-card"]
+	path = third_party/button-card
+	url = https://github.com/custom-cards/button-card.git
+[submodule "third_party/lovelace-auto-entities"]
+	path = third_party/lovelace-auto-entities
+	url = https://github.com/thomasloven/lovelace-auto-entities.git
+[submodule "third_party/lovelace-card-mod"]
+	path = third_party/lovelace-card-mod
+	url = https://github.com/thomasloven/lovelace-card-mod.git
+[submodule "third_party/home-assistant-ipcamlive"]
+	path = third_party/home-assistant-ipcamlive
+	url = https://github.com/ddanssaert/home-assistant-ipcamlive.git
+[submodule "third_party/hass-favicon"]
+	path = third_party/hass-favicon
+	url = https://github.com/thomasloven/hass-favicon.git

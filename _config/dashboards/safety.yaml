@@ -1,0 +1,209 @@
+views:
+  - title: 안전
+    sections:
+      - type: grid
+        cards:
+          - type: heading
+            heading: 생산라인1 기체 감지(CO & CO2)
+            heading_style: title
+            icon: mdi:air-filter
+          - type: custom:mini-graph-card
+            name: 생산라인1 - CO & CO2 그래프
+            entities:
+              - entity: sensor.average_line1_co2_value
+                name: Line1 Co2
+                color: '#00BFFF'
+              - entity: sensor.average_line1_co_value
+                name: Line1 Co
+                color: '#4682B4'
+            hours_to_show: 0.3
+            points_per_hour: 60
+            card_mod:
+              style: |
+                :host {
+                  height: 250px;
+                }
+      - type: grid
+        cards:
+          - type: heading
+            heading: 생산라인2 기체 감지(CO & CO2)
+            heading_style: title
+            icon: mdi:air-filter
+          - type: custom:mini-graph-card
+            name: 생산라인2 - CO & CO2 그래프
+            entities:
+              - entity: sensor.average_line2_co2_value
+                name: Line2 Co2
+                color: '#00BFFF'
+              - entity: sensor.average_line2_co_value
+                name: Line1 Co
+                color: '#4682B4'
+            hours_to_show: 0.3
+            points_per_hour: 60
+            card_mod:
+              style: |
+                :host {
+                  height: 250px;
+                }
+      - type: grid
+        cards:
+          - type: heading
+            heading_style: title
+            heading: 사이렌 on/off
+            icon: mdi:alert-rhombus-outline
+          - type: entities
+            entities:
+              - entity: siren.siren
+                name: 사이렌1
+                card_mod:
+                  style: |
+                    :host {
+                      --card-mod-icon-color:
+                        {% if is_state('siren.siren', 'on') %}
+                        red;
+                        {% else %}
+                        #a5adcb;
+                        {% endif %};
+                      }
+              - entity: siren.siren_with_all_features
+                name: 사이렌2
+                card_mod:
+                  style: |
+                    :host {
+                      --card-mod-icon-color:
+                        {% if is_state('siren.siren_with_all_features', 'on') %}
+                        red;
+                        {% else %}
+                        #a5adcb;
+                        {% endif %};
+                      }
+            title: 사이렌
+      - type: grid
+        cards:
+          - type: heading
+            heading_style: title
+            heading: 생산라인1 화재 감지 그래프 (Flame Sensor)
+            icon: mdi:fire-alert
+          - type: custom:mini-graph-card
+            name: 생산라인1 - 화재 감지
+            entities:
+              - entity: sensor.tia_fake_hub_temperature1
+                name: Line1 Temp1
+                color: '#FF4500'
+              - entity: sensor.tia_fake_hub_temperature2
+                name: Line1 Temp2
+                color: '#DC143C'
+            hours_to_show: 24
+            points_per_hour: 1
+            card_mod:
+              style: |
+                :host {
+                  height: 250px;
+                }
+      - type: grid
+        cards:
+          - type: heading
+            heading_style: title
+            heading: 생산라인2 화재 감지 그래프 (Flame Sensor)
+            icon: mdi:fire-alert
+          - type: custom:mini-graph-card
+            name: 생산라인2 - 화재 감지
+            entities:
+              - entity: sensor.tia_fake_hub_temperature3
+                name: Line2 Temp
+                color: '#FF4500'
+            hours_to_show: 24
+            points_per_hour: 1
+            card_mod:
+              style: |
+                :host {
+                  height: 250px;  
+                }
+      - type: grid
+        cards:
+          - type: heading
+            heading_style: title
+            heading: 스프링쿨러(Sprinkler)
+            icon: mdi:sprinkler-fire
+          - show_name: true
+            show_icon: true
+            type: button
+            tap_action:
+              action: toggle
+            entity: switch.celling_sprinkler1
+            name: Ceiling sprinkler 1
+            show_state: true
+            card_mod:
+              style: |
+                :host {
+                  --card-mod-icon-color: {% if is_state('switch.celling_sprinkler1', 'on') %} #ffd000 {% else %} #a5adcb {% endif %};
+                }
+          - show_name: true
+            show_icon: true
+            type: button
+            tap_action:
+              action: toggle
+            entity: switch.celling_sprinkler2
+            name: Ceiling sprinkler 2
+            show_state: true
+            card_mod:
+              style: |
+                :host {
+                  --card-mod-icon-color: {% if is_state('switch.celling_sprinkler2', 'on') %} #ffd000 {% else %} #a5adcb {% endif %};
+                }
+          - show_name: true
+            show_icon: true
+            type: button
+            tap_action:
+              action: toggle
+            name: Side sprinkler 1
+            show_state: true
+            entity: switch.side_sprinkler1
+            card_mod:
+              style: |
+                :host {
+                  --card-mod-icon-color: {% if is_state('switch.side_sprinkler1', 'on') %} #ff6000 {% else %} #a5adcb {% endif %};
+                }
+          - show_name: true
+            show_icon: true
+            type: button
+            tap_action:
+              action: toggle
+            entity: switch.side_sprinkler2
+            name: Side sprinkler 2
+            show_state: true
+            card_mod:
+              style: |
+                :host {
+                  --card-mod-icon-color: {% if is_state('switch.side_sprinkler2', 'on') %} #ff6000 {% else %} #a5adcb {% endif %};
+                }
+          - show_name: true
+            show_icon: true
+            type: button
+            tap_action:
+              action: toggle
+            entity: switch.sprinkler1
+            name: sprinkler 1
+            show_state: true
+            card_mod:
+              style: |
+                :host {
+                  --card-mod-icon-color: {% if is_state('switch.sprinkler1', 'on') %} #d9365e {% else %} #a5adcb {% endif %};
+                }
+          - show_name: true
+            show_icon: true
+            type: button
+            tap_action:
+              action: toggle
+            entity: switch.sprinkler2
+            show_state: true
+            name: Sprinkler 2
+            card_mod:
+              style: |
+                :host {
+                  --card-mod-icon-color: {% if is_state('switch.sprinkler2', 'on') %} #d9365e {% else %} #a5adcb {% endif %};
+                }
+    type: sections
+    max_columns: 3
+    cards: []
+    path: safety

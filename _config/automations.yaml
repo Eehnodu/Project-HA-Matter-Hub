@@ -1,0 +1,814 @@
+# - id: ATEAMCO2
+#   alias: Update CO2 sensor data
+#   trigger:
+#   - platform: time_pattern
+#     seconds: /5
+#   condition: []
+#   action:
+#   - data:
+#       entity_id: sensor.tia_fake_hub_co2sensor_2
+#     service: python_script.update_co2_level
+
+- id: ATEAM_TEMPERATURE
+  alias: Update Temperature sensor data
+  trigger:
+    - platform: time_pattern
+      seconds: /5
+  condition: []
+  action:
+    service: python_script.update_temp_level
+    data: {}
+
+- id: ATEAM_CO_CO2
+  alias: Update CO_CO2 sensor data
+  trigger:
+    - platform: time_pattern
+      seconds: /5
+  condition: []
+  action:
+    service: python_script.update_co_co2_level
+    data: {}
+
+- id: ATEAM_AIR_QUALITY
+  alias: Update air_quality sensor data
+  trigger:
+    - platform: time_pattern
+      seconds: /20
+  condition: []
+  action:
+    service: python_script.update_air_quality
+    data: {}
+
+- id: ATEAM_SOLAR
+  alias: Update solar sensor data
+  trigger:
+    - platform: time_pattern
+      seconds: /10
+  condition: []
+  action:
+    service: python_script.update_solar
+    data: {}
+
+- id: "update_product_value"
+  alias: Update Product Value
+  description: ""
+  triggers:
+    - seconds: /10
+      trigger: time_pattern
+  actions:
+    - target:
+        entity_id:
+          - sensor.custom_passed_product1
+          - sensor.custom_passed_product2
+      action: homeassistant.update_entity
+      data: {}
+
+- id: "update_vibration_value"
+  alias: Update Vibration Value
+  description: Update vibration sensor values
+  triggers:
+    - seconds: /1
+      id: "1"
+      trigger: time_pattern
+    - minutes: /1
+      id: "2"
+      trigger: time_pattern
+  actions:
+    - choose:
+        - conditions:
+            - condition: trigger
+              id: "1"
+          sequence:
+            - target:
+                entity_id: input_number.custom_vibration_sensor1
+              data:
+                value: "{{ [1.11, 1.12] | random }}"
+              action: input_number.set_value
+            - target:
+                entity_id: input_number.custom_vibration_sensor2
+              data:
+                value: "{{ [1.21, 1.22] | random }}"
+              action: input_number.set_value
+            - target:
+                entity_id: input_number.custom_vibration_sensor3
+              data:
+                value: "{{ [1.31, 1.32] | random }}"
+              action: input_number.set_value
+        - conditions:
+            - condition: trigger
+              id: "2"
+          sequence:
+            - target:
+                entity_id: input_number.custom_vibration_sensor1
+              data:
+                value: "{{ (range(10, 45) | random) / 10 }}"
+              action: input_number.set_value
+            - target:
+                entity_id: input_number.custom_vibration_sensor2
+              data:
+                value: "{{ (range(10, 45) | random) / 10 }}"
+              action: input_number.set_value
+            - target:
+                entity_id: input_number.custom_vibration_sensor3
+              data:
+                value: "{{ (range(10, 45) | random) / 10 }}"
+              action: input_number.set_value
+
+- id: "turn on the light and fan by co&co2(No.1)"
+  alias: Overview2 alert - turn on the light by co&co2(No.1)
+  description: CO2 또는 CO 센서에 설정된 기준값 초과 시 빨간 불과 팬 동작시키기
+  triggers:
+    - entity_id: sensor.tia_fake_hub_line1_co_1
+      above: 25
+      trigger: numeric_state
+    - entity_id: sensor.tia_fake_hub_line1_co_2
+      above: 25
+      trigger: numeric_state
+    - entity_id: sensor.tia_fake_hub_line1_co2_1
+      above: 600
+      trigger: numeric_state
+    - entity_id: sensor.tia_fake_hub_line1_co2_2
+      above: 600
+      trigger: numeric_state
+  conditions: []
+  actions:
+    - action: light.turn_on
+      metadata: {}
+      target:
+        entity_id: light.light1
+    - action: fan.turn_on
+      metadata: {}
+      data: {}
+      target:
+        entity_id: fan.fan1
+  mode: single
+
+- id: "turn off the light and fan by co&co2(No.1)"
+  alias: Overview2 alert - turn off the light and fan by co&co2(No.1)
+  description: CO2 또는 CO 센서에 설정된 기준값 미만일 시 라이트와 팬 끄기
+  triggers:
+    - entity_id: sensor.tia_fake_hub_line1_co_1
+      below: 25
+      trigger: numeric_state
+    - entity_id: sensor.tia_fake_hub_line1_co_2
+      below: 25
+      trigger: numeric_state
+    - entity_id: sensor.tia_fake_hub_line1_co2_1
+      below: 600
+      trigger: numeric_state
+    - entity_id: sensor.tia_fake_hub_line1_co2_2
+      below: 600
+      trigger: numeric_state
+  conditions: []
+  actions:
+    - action: light.turn_off
+      metadata: {}
+      data: {}
+      target:
+        entity_id: light.light1
+    - action: fan.turn_off
+      metadata: {}
+      data: {}
+      target:
+        entity_id: fan.fan1
+  mode: single
+
+- id: "turn on the light and fan by co&co2(No.2)"
+  alias: Overview2 alert - turn on the light by co&co2(No.2)
+  description: CO2 또는 CO 센서에 설정된 기준값 초과 시 빨간 불과 팬 동작시키기
+  triggers:
+    - entity_id: sensor.tia_fake_hub_line1_co_3
+      above: 25
+      trigger: numeric_state
+    - entity_id: sensor.tia_fake_hub_line1_co_4
+      above: 25
+      trigger: numeric_state
+    - entity_id: sensor.tia_fake_hub_line1_co2_4
+      above: 600
+      trigger: numeric_state
+    - entity_id: sensor.tia_fake_hub_line1_co2_4
+      above: 600
+      trigger: numeric_state
+  conditions: []
+  actions:
+    - action: light.turn_on
+      metadata: {}
+      target:
+        entity_id: light.light2
+    - action: fan.turn_on
+      metadata: {}
+      data: {}
+      target:
+        entity_id: fan.fan2
+  mode: single
+
+- id: "turn off the light and fan by co&co2(No.2)"
+  alias: Overview2 alert - turn off the light and fan by co&co2(No.2)
+  description: CO2 또는 CO 센서에 설정된 기준값 미만일 시 라이트와 팬 끄기
+  triggers:
+    - entity_id: sensor.tia_fake_hub_line1_co_3
+      below: 25
+      trigger: numeric_state
+    - entity_id: sensor.tia_fake_hub_line1_co_4
+      below: 25
+      trigger: numeric_state
+    - entity_id: sensor.tia_fake_hub_line1_co2_3
+      below: 600
+      trigger: numeric_state
+    - entity_id: sensor.tia_fake_hub_line1_co2_4
+      below: 600
+      trigger: numeric_state
+  conditions: []
+  actions:
+    - action: light.turn_off
+      metadata: {}
+      data: {}
+      target:
+        entity_id: light.light2
+    - action: fan.turn_off
+      metadata: {}
+      data: {}
+      target:
+        entity_id: fan.fan2
+  mode: single
+
+- id: "turn on the light and fan by co&co2(No.3)"
+  alias: Overview2 alert - turn on the light by co&co2(No.3)
+  description: CO2 또는 CO 센서에 설정된 기준값 초과 시 빨간 불과 팬 동작시키기
+  triggers:
+    - entity_id: sensor.tia_fake_hub_line1_co_5
+      above: 25
+      trigger: numeric_state
+    - entity_id: sensor.tia_fake_hub_line1_co_6
+      above: 25
+      trigger: numeric_state
+    - entity_id: sensor.tia_fake_hub_line1_co2_5
+      above: 600
+      trigger: numeric_state
+    - entity_id: sensor.tia_fake_hub_line1_co2_6
+      above: 600
+      trigger: numeric_state
+  conditions: []
+  actions:
+    - action: light.turn_on
+      metadata: {}
+      target:
+        entity_id: light.light3
+    - action: fan.turn_on
+      metadata: {}
+      data: {}
+      target:
+        entity_id: fan.fan3
+  mode: single
+
+- id: "turn off the light and fan by co&co2(No.3)"
+  alias: Overview2 alert - turn off the light and fan by co&co2(No.3)
+  description: CO2 또는 CO 센서에 설정된 기준값 미만일 시 라이트와 팬 끄기
+  triggers:
+    - entity_id: sensor.tia_fake_hub_line1_co_5
+      below: 25
+      trigger: numeric_state
+    - entity_id: sensor.tia_fake_hub_line1_co_6
+      below: 25
+      trigger: numeric_state
+    - entity_id: sensor.tia_fake_hub_line1_co2_5
+      below: 600
+      trigger: numeric_state
+    - entity_id: sensor.tia_fake_hub_line1_co2_6
+      below: 600
+      trigger: numeric_state
+  conditions: []
+  actions:
+    - action: light.turn_off
+      metadata: {}
+      data: {}
+      target:
+        entity_id: light.light3
+    - action: fan.turn_off
+      metadata: {}
+      data: {}
+      target:
+        entity_id: fan.fan3
+  mode: single
+
+- id: "turn on the light and fan by co&co2(No.4)"
+  alias: Overview2 alert - turn on the light by co&co2(No.4)
+  description: CO2 또는 CO 센서에 설정된 기준값 초과 시 빨간 불과 팬 동작시키기
+  triggers:
+    - entity_id: sensor.tia_fake_hub_line1_co_7
+      above: 25
+      trigger: numeric_state
+    - entity_id: sensor.tia_fake_hub_line1_co_8
+      above: 25
+      trigger: numeric_state
+    - entity_id: sensor.tia_fake_hub_line1_co2_7
+      above: 600
+      trigger: numeric_state
+    - entity_id: sensor.tia_fake_hub_line1_co2_8
+      above: 600
+      trigger: numeric_state
+  conditions: []
+  actions:
+    - action: light.turn_on
+      metadata: {}
+      target:
+        entity_id: light.light4
+    - action: fan.turn_on
+      metadata: {}
+      data: {}
+      target:
+        entity_id: fan.fan4
+  mode: single
+
+- id: "turn off the light and fan by co&co2(No.4)"
+  alias: Overview2 alert - turn off the light and fan by co&co2(No.4)
+  description: CO2 또는 CO 센서에 설정된 기준값 미만일 시 라이트와 팬 끄기
+  triggers:
+    - entity_id: sensor.tia_fake_hub_line1_co_7
+      below: 25
+      trigger: numeric_state
+    - entity_id: sensor.tia_fake_hub_line1_co_8
+      below: 25
+      trigger: numeric_state
+    - entity_id: sensor.tia_fake_hub_line1_co2_7
+      below: 600
+      trigger: numeric_state
+    - entity_id: sensor.tia_fake_hub_line1_co2_8
+      below: 600
+      trigger: numeric_state
+  conditions: []
+  actions:
+    - action: light.turn_off
+      metadata: {}
+      data: {}
+      target:
+        entity_id: light.light4
+    - action: fan.turn_off
+      metadata: {}
+      data: {}
+      target:
+        entity_id: fan.fan4
+  mode: single
+
+- id: "turn on the light and fan by co&co2(No.5)"
+  alias: Overview2 alert - turn on the light by co&co2(No.5)
+  description: CO2 또는 CO 센서에 설정된 기준값 초과 시 빨간 불과 팬 동작시키기
+  triggers:
+    - entity_id: sensor.tia_fake_hub_line1_co_9
+      above: 25
+      trigger: numeric_state
+    - entity_id: sensor.tia_fake_hub_line1_co_10
+      above: 25
+      trigger: numeric_state
+    - entity_id: sensor.tia_fake_hub_line1_co2_9
+      above: 600
+      trigger: numeric_state
+    - entity_id: sensor.tia_fake_hub_line1_co2_10
+      above: 600
+      trigger: numeric_state
+  conditions: []
+  actions:
+    - action: light.turn_on
+      metadata: {}
+      target:
+        entity_id: light.light5
+    - action: fan.turn_on
+      metadata: {}
+      data: {}
+      target:
+        entity_id: fan.fan5
+  mode: single
+
+- id: "turn off the light and fan by co&co2(No.5)"
+  alias: Overview2 alert - turn off the light and fan by co&co2(No.5)
+  description: CO2 또는 CO 센서에 설정된 기준값 미만일 시 라이트와 팬 끄기
+  triggers:
+    - entity_id: sensor.tia_fake_hub_line1_co_9
+      below: 25
+      trigger: numeric_state
+    - entity_id: sensor.tia_fake_hub_line1_co_10
+      below: 25
+      trigger: numeric_state
+    - entity_id: sensor.tia_fake_hub_line1_co2_9
+      below: 600
+      trigger: numeric_state
+    - entity_id: sensor.tia_fake_hub_line1_co2_10
+      below: 600
+      trigger: numeric_state
+  conditions: []
+  actions:
+    - action: light.turn_off
+      metadata: {}
+      data: {}
+      target:
+        entity_id: light.light5
+    - action: fan.turn_off
+      metadata: {}
+      data: {}
+      target:
+        entity_id: fan.fan5
+  mode: single
+
+- id: "turn on the light and fan by co&co2(No.6)"
+  alias: Overview2 alert - turn on the light by co&co2(No.6)
+  description: CO2 또는 CO 센서에 설정된 기준값 초과 시 빨간 불과 팬 동작시키기
+  triggers:
+    - entity_id: sensor.tia_fake_hub_line1_co_11
+      above: 25
+      trigger: numeric_state
+    - entity_id: sensor.tia_fake_hub_line1_co_12
+      above: 25
+      trigger: numeric_state
+    - entity_id: sensor.tia_fake_hub_line1_co2_11
+      above: 600
+      trigger: numeric_state
+    - entity_id: sensor.tia_fake_hub_line1_co2_12
+      above: 600
+      trigger: numeric_state
+  conditions: []
+  actions:
+    - action: light.turn_on
+      metadata: {}
+      target:
+        entity_id: light.light6
+    - action: fan.turn_on
+      metadata: {}
+      data: {}
+      target:
+        entity_id: fan.fan6
+  mode: single
+
+- id: "turn off the light and fan by co&co2(No.6)"
+  alias: Overview2 alert - turn off the light and fan by co&co2(No.6)
+  description: CO2 또는 CO 센서에 설정된 기준값 미만일 시 라이트와 팬 끄기
+  triggers:
+    - entity_id: sensor.tia_fake_hub_line1_co_11
+      below: 25
+      trigger: numeric_state
+    - entity_id: sensor.tia_fake_hub_line1_co_12
+      below: 25
+      trigger: numeric_state
+    - entity_id: sensor.tia_fake_hub_line1_co2_11
+      below: 600
+      trigger: numeric_state
+    - entity_id: sensor.tia_fake_hub_line1_co2_12
+      below: 600
+      trigger: numeric_state
+  conditions: []
+  actions:
+    - action: light.turn_off
+      metadata: {}
+      data: {}
+      target:
+        entity_id: light.light6
+    - action: fan.turn_off
+      metadata: {}
+      data: {}
+      target:
+        entity_id: fan.fan6
+  mode: single
+
+- id: "turn on the light and fan by co&co2(No.7)"
+  alias: Overview2 alert - turn on the light by co&co2(No.7)
+  description: CO2 또는 CO 센서에 설정된 기준값 초과 시 빨간 불과 팬 동작시키기
+  triggers:
+    - entity_id: sensor.tia_fake_hub_line2_co_1
+      above: 25
+      trigger: numeric_state
+    - entity_id: sensor.tia_fake_hub_line2_co_2
+      above: 25
+      trigger: numeric_state
+    - entity_id: sensor.tia_fake_hub_line2_co_3
+      above: 25
+      trigger: numeric_state
+    - entity_id: sensor.tia_fake_hub_line2_co2_1
+      above: 600
+      trigger: numeric_state
+    - entity_id: sensor.tia_fake_hub_line2_co2_2
+      above: 600
+      trigger: numeric_state
+    - entity_id: sensor.tia_fake_hub_line2_co2_3
+      above: 600
+      trigger: numeric_state
+    - entity_id: sensor.tia_fake_hub_line2_co2_4
+      above: 600
+      trigger: numeric_state
+  conditions: []
+  actions:
+    - action: light.turn_on
+      metadata: {}
+      target:
+        entity_id: light.light7
+    - action: fan.turn_on
+      metadata: {}
+      data: {}
+      target:
+        entity_id: fan.fan7
+  mode: single
+
+- id: "turn off the light and fan by co&co2(No.7)"
+  alias: Overview2 alert - turn off the light and fan by co&co2(No.7)
+  description: CO2 또는 CO 센서에 설정된 기준값 미만일 시 라이트와 팬 끄기
+  triggers:
+    - entity_id: sensor.tia_fake_hub_line2_co_1
+      below: 25
+      trigger: numeric_state
+    - entity_id: sensor.tia_fake_hub_line2_co_2
+      below: 25
+      trigger: numeric_state
+    - entity_id: sensor.tia_fake_hub_line2_co_3
+      below: 25
+      trigger: numeric_state
+    - entity_id: sensor.tia_fake_hub_line2_co2_1
+      below: 600
+      trigger: numeric_state
+    - entity_id: sensor.tia_fake_hub_line2_co2_2
+      below: 600
+      trigger: numeric_state
+    - entity_id: sensor.tia_fake_hub_line2_co2_3
+      below: 600
+      trigger: numeric_state
+    - entity_id: sensor.tia_fake_hub_line2_co2_4
+      below: 600
+      trigger: numeric_state
+  conditions: []
+  actions:
+    - action: light.turn_off
+      metadata: {}
+      data: {}
+      target:
+        entity_id: light.light7
+    - action: fan.turn_off
+      metadata: {}
+      data: {}
+      target:
+        entity_id: fan.fan7
+  mode: single
+
+- id: "turn on the light and fan by co&co2(No.8)"
+  alias: Overview2 alert - turn on the light by co&co2(No.8)
+  description: CO2 또는 CO 센서에 설정된 기준값 초과 시 빨간 불과 팬 동작시키기
+  triggers:
+    - entity_id: sensor.tia_fake_hub_line2_co_4
+      above: 25
+      trigger: numeric_state
+    - entity_id: sensor.tia_fake_hub_line2_co_5
+      above: 25
+      trigger: numeric_state
+    - entity_id: sensor.tia_fake_hub_line2_co_6
+      above: 25
+      trigger: numeric_state
+    - entity_id: sensor.tia_fake_hub_line2_co_7
+      above: 25
+      trigger: numeric_state
+    - entity_id: sensor.tia_fake_hub_line2_co2_5
+      above: 600
+      trigger: numeric_state
+    - entity_id: sensor.tia_fake_hub_line2_co2_6
+      above: 600
+      trigger: numeric_state
+    - entity_id: sensor.tia_fake_hub_line2_co2_7
+      above: 600
+      trigger: numeric_state
+  conditions: []
+  actions:
+    - action: light.turn_on
+      metadata: {}
+      target:
+        entity_id: light.light8
+    - action: fan.turn_on
+      metadata: {}
+      data: {}
+      target:
+        entity_id: fan.fan8
+  mode: single
+
+- id: "turn off the light and fan by co&co2(No.8)"
+  alias: Overview2 alert - turn off the light and fan by co&co2(No.8)
+  description: CO2 또는 CO 센서에 설정된 기준값 미만일 시 라이트와 팬 끄기
+  triggers:
+    - entity_id: sensor.tia_fake_hub_line2_co_4
+      below: 25
+      trigger: numeric_state
+    - entity_id: sensor.tia_fake_hub_line2_co_5
+      below: 25
+      trigger: numeric_state
+    - entity_id: sensor.tia_fake_hub_line2_co_6
+      below: 25
+      trigger: numeric_state
+    - entity_id: sensor.tia_fake_hub_line2_co_7
+      below: 25
+      trigger: numeric_state
+    - entity_id: sensor.tia_fake_hub_line2_co2_5
+      below: 600
+      trigger: numeric_state
+    - entity_id: sensor.tia_fake_hub_line2_co2_6
+      below: 600
+      trigger: numeric_state
+    - entity_id: sensor.tia_fake_hub_line2_co2_7
+      below: 600
+      trigger: numeric_state
+  conditions: []
+  actions:
+    - action: light.turn_off
+      metadata: {}
+      data: {}
+      target:
+        entity_id: light.light8
+    - action: fan.turn_off
+      metadata: {}
+      data: {}
+      target:
+        entity_id: fan.fan8
+  mode: single
+
+- id: "Safety Sprinkler Notifications"
+  alias: Safety Sprinkler Notifications
+  trigger:
+    - platform: state
+      entity_id:
+        - switch.celling_sprinkler1
+        - switch.celling_sprinkler2
+        - switch.side_sprinkler1
+        - switch.side_sprinkler2
+        - switch.sprinkler1
+        - switch.sprinkler2
+      to: "on"
+  condition:
+    - condition: template
+      value_template: '{{ trigger.to_state.state == "on" }}'
+  action:
+    - service: notify.persistent_notification
+      data:
+        message: >-
+          {% if trigger.entity_id == "switch.celling_sprinkler1" %}
+          생산라인1의 Celling Sprinkler1이 작동하였습니다.
+          {% elif trigger.entity_id == "switch.celling_sprinkler2" %}
+          생산라인1의 Celling Sprinkler2가 작동하였습니다.
+          {% elif trigger.entity_id == "switch.side_sprinkler1" %}
+          생산라인2의 Side Sprinkler1이 작동하였습니다.
+          {% elif trigger.entity_id == "switch.side_sprinkler2" %}
+          생산라인2의 Side Sprinkler2가 작동하였습니다.
+          {% elif trigger.entity_id == "switch.sprinkler1" %}
+          생산라인1의 Sprinkler1이 작동하였습니다.
+          {% elif trigger.entity_id == "switch.sprinkler2" %}
+          생산라인1의 Sprinkler2가 작동하였습니다.
+          {% endif %}
+        title: 스프링쿨러 작동
+  mode: single
+
+- id: "Unlock Notifications"
+  alias: Unlock Notifications
+  trigger:
+    - platform: state
+      entity_id:
+        - lock.front_lock1
+        - lock.front_lock2
+        - lock.front_lock3
+        - lock.back_lock1
+        - lock.left_lock1
+        - lock.left_lock2
+        - lock.right_lock1
+        - lock.right_lock2
+      to: "unlocked"
+  condition:
+    - condition: template
+      value_template: '{{ trigger.to_state.state == "unlocked" }}'
+  action:
+    - service: notify.persistent_notification
+      data:
+        title: 잠금 해제 알림
+        message: >-
+          {% if trigger.entity_id == "lock.front_lock1" %}
+            정문1 잠금이 해제되었습니다.
+          {% elif trigger.entity_id == "lock.front_lock2" %}
+            정문2 잠금이 해제되었습니다.
+          {% elif trigger.entity_id == "lock.front_lock3" %}
+            정문3 잠금이 해제되었습니다.
+          {% elif trigger.entity_id == "lock.back_lock1" %}
+            후문1 잠금이 해제되었습니다.
+          {% elif trigger.entity_id == "lock.left_lock1" %}
+            좌측1 잠금이 해제되었습니다.
+          {% elif trigger.entity_id == "lock.left_lock2" %}
+            좌측2 잠금이 해제되었습니다.
+          {% elif trigger.entity_id == "lock.right_lock1" %}
+            우측1 잠금이 해제되었습니다.
+          {% elif trigger.entity_id == "lock.right_lock2" %}
+            우측2 잠금이 해제되었습니다.
+          {% endif %}
+  mode: single
+
+- id: "Lock Notifications"
+  alias: Lock Notifications
+  trigger:
+    - platform: state
+      entity_id:
+        - lock.front_lock1
+        - lock.front_lock2
+        - lock.front_lock3
+        - lock.back_lock1
+        - lock.left_lock1
+        - lock.left_lock2
+        - lock.right_lock1
+        - lock.right_lock2
+      to: "locked"
+  condition:
+    - condition: template
+      value_template: '{{ trigger.to_state.state == "locked" }}'
+  action:
+    - service: notify.persistent_notification
+      data:
+        title: 잠금 활성화 알림
+        message: >-
+          {% if trigger.entity_id == "lock.front_lock1" %}
+            정문1 잠금이 활성화되었습니다.
+          {% elif trigger.entity_id == "lock.front_lock2" %}
+            정문2 잠금이 활성화되었습니다.
+          {% elif trigger.entity_id == "lock.front_lock3" %}
+            정문3 잠금이 활성화되었습니다.
+          {% elif trigger.entity_id == "lock.back_lock1" %}
+            후문1 잠금이 활성화되었습니다.
+          {% elif trigger.entity_id == "lock.left_lock1" %}
+            좌측1 잠금이 활성화되었습니다.
+          {% elif trigger.entity_id == "lock.left_lock2" %}
+            좌측2 잠금이 활성화되었습니다.
+          {% elif trigger.entity_id == "lock.right_lock2" %}
+            우측2 잠금이 활성화되었습니다.
+          {% elif trigger.entity_id == "lock.right_lock2" %}
+            우측2 잠금이 활성화되었습니다.
+          {% endif %}
+  mode: single
+
+- id: "turn on sprinkler"
+  alias: turn on sprinkler
+  triggers:
+    - platform: numeric_state
+      entity_id:
+        - sensor.tia_fake_hub_temperature1
+        - sensor.tia_fake_hub_temperature2
+        - sensor.tia_fake_hub_temperature3
+      above: 70
+  conditions: []
+  actions:
+    - action: switch.turn_on
+      metadata: {}
+      data: {}
+      target:
+        entity_id: >
+          {% if trigger.entity_id == 'sensor.tia_fake_hub_temperature1' %}
+            switch.celling_sprinkler1
+          {% elif trigger.entity_id == 'sensor.tia_fake_hub_temperature2' %}
+            switch.celling_sprinkler2
+          {% elif trigger.entity_id == 'sensor.tia_fake_hub_temperature3' %}
+            switch.side_sprinkler1
+          {% endif %}
+    - action: switch.turn_on
+      metadata: {}
+      data: {}
+      target:
+        entity_id: >
+          {% if trigger.entity_id == 'sensor.tia_fake_hub_temperature1' %}
+            switch.sprinkler1
+          {% elif trigger.entity_id == 'sensor.tia_fake_hub_temperature2' %}
+            switch.sprinkler2
+          {% elif trigger.entity_id == 'sensor.tia_fake_hub_temperature3' %}
+            switch.side_sprinkler2
+          {% endif %}
+  mode: single
+
+- id: "turn off sprinkler"
+  alias: turn off sprinkler
+  triggers:
+    - platform: numeric_state
+      entity_id:
+        - sensor.tia_fake_hub_temperature1
+        - sensor.tia_fake_hub_temperature2
+        - sensor.tia_fake_hub_temperature3
+      below: 70
+  conditions: []
+  actions:
+    - action: switch.turn_off
+      metadata: {}
+      data: {}
+      target:
+        entity_id: >
+          {% if trigger.entity_id == 'sensor.tia_fake_hub_temperature1' %}
+            switch.celling_sprinkler1
+          {% elif trigger.entity_id == 'sensor.tia_fake_hub_temperature2' %}
+            switch.celling_sprinkler2
+          {% elif trigger.entity_id == 'sensor.tia_fake_hub_temperature3' %}
+            switch.side_sprinkler1
+          {% endif %}
+    - action: switch.turn_off
+      metadata: {}
+      data: {}
+      target:
+        entity_id: >
+          {% if trigger.entity_id == 'sensor.tia_fake_hub_temperature1' %}
+            switch.sprinkler1
+          {% elif trigger.entity_id == 'sensor.tia_fake_hub_temperature2' %}
+            switch.sprinkler2
+          {% elif trigger.entity_id == 'sensor.tia_fake_hub_temperature3' %}
+            switch.side_sprinkler2
+          {% endif %}
+  mode: single

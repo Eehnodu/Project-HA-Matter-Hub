@@ -1,0 +1,1134 @@
+views:
+  - title: 생산라인 1
+    type: sections
+    max_columns: 3
+    icon: ''
+    sections:
+      - type: grid
+        cards:
+          - type: heading
+            heading_style: title
+            heading: 온도 (temperature)
+            icon: mdi:temperature-celsius
+          - type: grid
+            square: false
+            columns: 1
+            cards:
+              - type: thermostat
+                entity: climate.ecobee
+                features:
+                  - type: climate-hvac-modes
+                    hvac_modes:
+                      - 'off'
+                      - cool
+                      - heat_cool
+                      - auto
+                      - dry
+                      - fan_only
+          - type: grid
+            square: false
+            columns: 1
+            cards:
+              - type: thermostat
+                entity: climate.heatpump
+                features:
+                  - type: climate-hvac-modes
+                    hvac_modes:
+                      - heat
+                      - 'off'
+          - type: grid
+            square: false
+            columns: 1
+            cards:
+              - type: thermostat
+                entity: climate.hvac
+                features:
+                  - type: climate-hvac-modes
+                    hvac_modes:
+                      - 'off'
+                      - heat
+                      - cool
+                      - auto
+                      - dry
+                      - fan_only
+        column_span: 4
+      - type: grid
+        cards:
+          - type: heading
+            heading_style: title
+            heading: 습도 (Humidity)
+            icon: mdi:water-percent
+          - type: humidifier
+            entity: humidifier.humidifier
+            features:
+              - type: humidifier-toggle
+            grid_options:
+              columns: 12
+              rows: 7
+          - type: grid
+            square: false
+            columns: 1
+            cards:
+              - type: humidifier
+                entity: humidifier.dehumidifier
+                features:
+                  - type: humidifier-toggle
+          - type: grid
+            square: false
+            columns: 1
+            cards:
+              - type: humidifier
+                entity: humidifier.hygrostat
+                features:
+                  - type: humidifier-toggle
+        column_span: 4
+      - type: grid
+        cards:
+          - type: heading
+            heading_style: title
+            heading: 공기질 (Air quality)
+            icon: mdi:air-filter
+            grid_options:
+              columns: 12
+              rows: 1
+          - type: heading
+            heading_style: title
+            heading: 모터 팬 (Motor fan)
+            icon: mdi:fan
+            grid_options:
+              columns: 12
+              rows: 1
+          - type: history-graph
+            entities:
+              - entity: air_quality.air_quality1
+                name: 공기질 센서1
+              - entity: air_quality.air_quality2
+                name: 공기질 센서2
+            hours_to_show: 1
+            refresh_interval: 10
+            title: 생산라인1 - 공기질
+          - type: entities
+            entities:
+              - entity: fan.fan1
+                name: 생산라인1 모터 팬1
+                card_mod:
+                  style: |
+                    :host {
+                      --card-mod-icon-color:
+                        {% if is_state('fan.fan1', 'on') %}
+                        #00bcd4 ;
+                        {% else %}
+                        #6c6f85 ;
+                        {% endif %};
+              - entity: fan.fan2
+                name: 생산라인1 모터 팬2
+                card_mod:
+                  style: |
+                    :host {
+                      --card-mod-icon-color:
+                        {% if is_state('fan.fan2', 'on') %}
+                        #00bcd4 ;
+                        {% else %}
+                        #6c6f85 ;
+                        {% endif %};
+              - entity: fan.fan3
+                name: 생산라인1 모터 팬3
+                card_mod:
+                  style: |
+                    :host {
+                      --card-mod-icon-color:
+                        {% if is_state('fan.fan3', 'on') %}
+                        #00bcd4 ;
+                        {% else %}
+                        #6c6f85 ;
+                        {% endif %};
+              - entity: fan.fan4
+                name: 생산라인1 모터 팬4
+                card_mod:
+                  style: |
+                    :host {
+                      --card-mod-icon-color:
+                        {% if is_state('fan.fan4', 'on') %}
+                        #00bcd4 ;
+                        {% else %}
+                        #6c6f85 ;
+                        {% endif %};
+              - entity: fan.fan5
+                name: 생산라인1 모터 팬5
+                card_mod:
+                  style: |
+                    :host {
+                      --card-mod-icon-color:
+                        {% if is_state('fan.fan5', 'on') %}
+                        #00bcd4 ;
+                        {% else %}
+                        #6c6f85 ;
+                        {% endif %};
+              - entity: fan.fan6
+                name: 생산라인1 모터 팬6
+                card_mod:
+                  style: |
+                    :host {
+                      --card-mod-icon-color:
+                        {% if is_state('fan.fan6', 'on') %}
+                        #00bcd4 ;
+                        {% else %}
+                        #6c6f85 ;
+                        {% endif %};
+            title: 생산라인1 - 모터 팬
+        column_span: 2
+      - type: grid
+        cards:
+          - type: heading
+            heading_style: title
+            icon: mdi:alarm-light-outline
+            heading: 경광등 (Light)
+          - type: entities
+            entities:
+              - entity: light.light1
+                name: 생산라인1 - 경광등1
+                card_mod:
+                  style: |
+                    :host {
+                      --card-mod-icon-color:
+                        {% if is_state('light.light1', 'on') %}
+                        red ;
+                        {% else %}
+                        green ;
+                        {% endif %};
+              - entity: light.light2
+                name: 생산라인1 - 경광등2
+                card_mod:
+                  style: |
+                    :host {
+                      --card-mod-icon-color:
+                        {% if is_state('light.light2', 'on') %}
+                        red;
+                        {% else %}
+                        green;
+                        {% endif %};
+              - entity: light.light3
+                name: 생산라인1 - 경광등3
+                card_mod:
+                  style: |
+                    :host {
+                      --card-mod-icon-color:
+                        {% if is_state('light.light3', 'on') %}
+                        red;
+                        {% else %}
+                        green;
+                        {% endif %};
+              - entity: light.light4
+                name: 생산라인1 - 경광등4
+                card_mod:
+                  style: |
+                    :host {
+                      --card-mod-icon-color:
+                        {% if is_state('light.light4', 'on') %}
+                        red;
+                        {% else %}
+                        green;
+                        {% endif %};
+              - entity: light.light5
+                name: 생산라인1 - 경광등5
+                card_mod:
+                  style: |
+                    :host {
+                      --card-mod-icon-color:
+                        {% if is_state('light.light5', 'on') %}
+                        red;
+                        {% else %}
+                        green;
+                        {% endif %};
+              - entity: light.light6
+                name: 생산라인1 - 경광등6
+                card_mod:
+                  style: |
+                    :host {
+                      --card-mod-icon-color:
+                        {% if is_state('light.light6', 'on') %}
+                        red;
+                        {% else %}
+                        green;
+                        {% endif %};
+            title: 생산라인1 - 경광등
+    cards: []
+    path: line1
+  - type: sidebar
+    path: line2
+    title: 생산라인 2
+    cards:
+      - type: picture-elements
+        title: 생산라인2
+        elements:
+          - type: state-icon
+            entity: switch.line2_sensor1
+            style:
+              left: 15%
+              top: 60%
+              '--mdc-icon-size': 50px
+            card_mod:
+              style: |
+                :host {
+                  --card-mod-icon-color:
+                    {% if is_state('switch.line2_sensor1', 'on') %}
+                    #FFD700 ;
+                    {% else %}
+                    #6c6f85 ;
+                    {% endif %};
+          - type: state-icon
+            entity: switch.line2_sensor2
+            style:
+              left: 25%
+              top: 60%
+              '--mdc-icon-size': 50px
+            card_mod:
+              style: |
+                :host {
+                  --card-mod-icon-color:
+                    {% if is_state('switch.line2_sensor2', 'on') %}
+                    #FFD700 ;
+                    {% else %}
+                    #6c6f85 ;
+                    {% endif %};
+          - type: state-icon
+            entity: switch.line2_sensor3
+            style:
+              left: 35%
+              top: 60%
+              '--mdc-icon-size': 50px
+            card_mod:
+              style: |
+                :host {
+                  --card-mod-icon-color:
+                    {% if is_state('switch.line2_sensor3', 'on') %}
+                    #ADD8E6 ;
+                    {% else %}
+                    #6c6f85 ;
+                    {% endif %};
+                  --card-mod-icon:
+                    {% if is_state('switch.line2_sensor3', 'on') %}
+                    mdi:remote;
+                    {% else %}
+                    mdi:remote-off;
+                    {% endif %};
+          - type: state-icon
+            entity: switch.line2_sensor4
+            style:
+              left: 45%
+              top: 60%
+              '--mdc-icon-size': 50px
+            card_mod:
+              style: |
+                :host {
+                  --card-mod-icon-color:
+                    {% if is_state('switch.line2_sensor4', 'on') %}
+                    #ADD8E6 ;
+                    {% else %}
+                    #6c6f85 ;
+                    {% endif %};
+                  --card-mod-icon:
+                    {% if is_state('switch.line2_sensor4', 'on') %}
+                    mdi:remote;
+                    {% else %}
+                    mdi:remote-off;
+                    {% endif %};
+                  }
+          - type: state-icon
+            entity: switch.line2_sensor5
+            style:
+              left: 55%
+              top: 60%
+              '--mdc-icon-size': 50px
+            card_mod:
+              style: |
+                :host {
+                  --card-mod-icon-color:
+                    {% if is_state('switch.line2_sensor5', 'on') %}
+                    #FF8C00 ;
+                    {% else %}
+                    #6c6f85 ;
+                    {% endif %};
+                  --card-mod-icon:
+                    {% if is_state('switch.line2_sensor5', 'on') %}
+                    mdi:engine-outline;
+                    {% else %}
+                    mdi:engine-off-outline;
+                    {% endif %};
+                  }
+          - type: state-icon
+            entity: switch.line2_sensor6
+            style:
+              left: 65%
+              top: 60%
+              '--mdc-icon-size': 50px
+            card_mod:
+              style: |
+                :host {
+                  --card-mod-icon-color:
+                    {% if is_state('switch.line2_sensor6', 'on') %}
+                    #FF8C00 ;
+                    {% else %}
+                    #6c6f85 ;
+                    {% endif %};
+                  --card-mod-icon:
+                    {% if is_state('switch.line2_sensor6', 'on') %}
+                    mdi:engine-outline;
+                    {% else %}
+                    mdi:engine-off-outline;
+                    {% endif %};
+                  }
+        dark_mode_image: /local/line2.png
+        image: /local/line2.png
+      - type: entities
+        entities:
+          - entity: light.light7
+            name: 생산라인2 - 경광등1
+            initial: false
+            card_mod:
+              style: |
+                :host {
+                  --card-mod-icon-color:
+                    {% if is_state('light.light7', 'on') %}
+                    red ;
+                    {% else %}
+                    green ;
+                    {% endif %};
+          - entity: light.light8
+            name: 생산라인2 - 경광등2
+            initial: false
+            card_mod:
+              style: |
+                :host {
+                  --card-mod-icon-color:
+                    {% if is_state('light.light8', 'on') %}
+                    red ;
+                    {% else %}
+                    green ;
+                    {% endif %};
+        title: 생산라인2 - 경광등
+        view_layout:
+          position: sidebar
+      - type: history-graph
+        title: 생산라인2 - 진동 센서
+        entities:
+          - entity: sensor.custom_vibration_sensor1
+            name: 진동 센서1
+          - entity: sensor.custom_vibration_sensor2
+            name: 진동 센서2
+          - entity: sensor.custom_vibration_sensor3
+            name: 진동 센서3
+        hours_to_show: 0.0167
+        refresh_interval: 5
+      - type: entities
+        entities:
+          - entity: fan.fan7
+            name: 생산라인2 - 모터 팬1
+            card_mod:
+              style: |
+                :host {
+                  --card-mod-icon-color:
+                    {% if is_state('fan.fan7', 'on') %}
+                    #00bcd4 ;
+                    {% else %}
+                    #6c6f85 ;
+                    {% endif %};
+          - entity: fan.fan8
+            name: 생산라인2 - 모터 팬2
+            card_mod:
+              style: |
+                :host {
+                  --card-mod-icon-color:
+                    {% if is_state('fan.fan8', 'on') %}
+                    #00bcd4 ;
+                    {% else %}
+                    #6c6f85 ;
+                    {% endif %};
+        view_layout:
+          position: sidebar
+        title: 생산라인2 - 모터 팬
+      - type: entities
+        entities:
+          - entity: switch.line2_sensor1
+            name: 생산라인2 - 스위치1
+            card_mod:
+              style: |
+                :host {
+                  --card-mod-icon-color:
+                    {% if is_state('switch.line2_sensor1', 'on') %}
+                    #FFD700 ;
+                    {% else %}
+                    #6c6f85 ;
+                    {% endif %};
+          - entity: switch.line2_sensor2
+            name: 생산라인2 - 스위치2
+            card_mod:
+              style: |
+                :host {
+                  --card-mod-icon-color:
+                    {% if is_state('switch.line2_sensor2', 'on') %}
+                    #FFD700 ;
+                    {% else %}
+                    #6c6f85 ;
+                    {% endif %};
+          - entity: switch.line2_sensor3
+            name: 생산라인2 - 스위치3
+            card_mod:
+              style: |
+                :host {
+                  --card-mod-icon-color:
+                    {% if is_state('switch.line2_sensor3', 'on') %}
+                    #ADD8E6 ;
+                    {% else %}
+                    #6c6f85 ;
+                    {% endif %};
+                  --card-mod-icon:
+                    {% if is_state('switch.line2_sensor3', 'on') %}
+                    mdi:remote;
+                    {% else %}
+                    mdi:remote-off;
+                    {% endif %};
+          - entity: switch.line2_sensor4
+            name: 생산라인2 - 스위치4
+            card_mod:
+              style: |
+                :host {
+                  --card-mod-icon-color:
+                    {% if is_state('switch.line2_sensor4', 'on') %}
+                    #ADD8E6 ;
+                    {% else %}
+                    #6c6f85 ;
+                    {% endif %};
+                  --card-mod-icon:
+                    {% if is_state('switch.line2_sensor4', 'on') %}
+                    mdi:remote;
+                    {% else %}
+                    mdi:remote-off;
+                    {% endif %};
+          - entity: switch.line2_sensor5
+            name: 생산라인2 - 스위치5
+            card_mod:
+              style: |
+                :host {
+                  --card-mod-icon-color:
+                    {% if is_state('switch.line2_sensor5', 'on') %}
+                    #FF8C00 ;
+                    {% else %}
+                    #6c6f85 ;
+                    {% endif %};
+                  --card-mod-icon:
+                    {% if is_state('switch.line2_sensor5', 'on') %}
+                    mdi:engine-outline;
+                    {% else %}
+                    mdi:engine-off-outline;
+                    {% endif %};
+          - entity: switch.line2_sensor6
+            name: 생산라인2 - 스위치6
+            card_mod:
+              style: |
+                :host {
+                  --card-mod-icon-color:
+                    {% if is_state('switch.line2_sensor6', 'on') %}
+                    #FF8C00 ;
+                    {% else %}
+                    #6c6f85 ;
+                    {% endif %};
+                  --card-mod-icon:
+                    {% if is_state('switch.line2_sensor6', 'on') %}
+                    mdi:engine-outline;
+                    {% else %}
+                    mdi:engine-off-outline;
+                    {% endif %};
+        title: 생산라인2 - 제어
+        view_layout:
+          position: sidebar
+    badges: []
+  - type: sidebar
+    path: in
+    title: 입고장
+    cards:
+      - type: picture-elements
+        title: 입고장
+        elements:
+          - type: state-icon
+            entity: lock.in_gate1
+            title: In-InGate1
+            icon: mdi:gate-arrow-right
+            style:
+              left: 5%
+              top: 18%
+              '--mdc-icon-size': 70px
+          - type: state-icon
+            entity: lock.in_gate2
+            title: In-InGate2
+            icon: mdi:gate-arrow-right
+            style:
+              left: 5%
+              top: 73%
+              '--mdc-icon-size': 70px
+          - type: state-icon
+            entity: switch.in_sensor1
+            title: In-InSensor1
+            icon: ''
+            style:
+              left: 30%
+              top: 18%
+              '--mdc-icon-size': 70px
+            card_mod:
+              style: |
+                :host {
+                  --card-mod-icon-color:
+                    {% if is_state('switch.in_sensor1', 'on') %}
+                    #FF9913;
+                    {% else %}
+                    #6c6f85 ;
+                    {% endif %};
+          - type: state-icon
+            entity: switch.in_sensor2
+            title: In-InSensor2
+            icon: ''
+            style:
+              left: 30%
+              top: 73%
+              '--mdc-icon-size': 70px
+            card_mod:
+              style: |
+                :host {
+                  --card-mod-icon-color:
+                    {% if is_state('switch.in_sensor2', 'on') %}
+                    #FF9913;
+                    {% else %}
+                    #6c6f85 ;
+                    {% endif %};
+          - type: state-icon
+            entity: switch.in_sensor3
+            title: In-InSensor3
+            icon: ''
+            style:
+              left: 65%
+              top: 73%
+              '--mdc-icon-size': 70px
+            card_mod:
+              style: |
+                :host {
+                  --card-mod-icon-color:
+                    {% if is_state('switch.in_sensor3', 'on') %}
+                    #4CAF50;
+                    {% else %}
+                    #6c6f85;
+                    {% endif %};
+                  --card-mod-icon:
+                    {% if is_state('switch.in_sensor3', 'on') %}
+                    mdi:boom-gate-up;
+                    {% else %}
+                    mdi:boom-gate;
+                    {% endif %};
+          - type: state-icon
+            entity: switch.in_sensor4
+            title: In-InSensor4
+            icon: ''
+            style:
+              left: 87%
+              top: 76%
+              '--mdc-icon-size': 70px
+            card_mod:
+              style: |
+                :host {
+                  --card-mod-icon-color:
+                    {% if is_state('switch.in_sensor4', 'on') %}
+                    #388E3C;
+                    {% else %}
+                    #6c6f85 ;
+                    {% endif %};
+                  --card-mod-icon:
+                    {% if is_state('switch.in_sensor4', 'on') %}
+                    mdi:video;
+                    {% else %}
+                    mdi:video-off;
+                    {% endif %};
+        image: local/in.png
+        dark_mode_image: local.in.png
+      - show_name: true
+        show_icon: true
+        type: button
+        tap_action:
+          action: toggle
+        show_state: true
+        icon: mdi:gate-arrow-right
+        view_layout:
+          position: sidebar
+        entity: lock.in_gate1
+        name: 입고장 게이트 1
+      - show_name: true
+        show_icon: true
+        type: button
+        tap_action:
+          action: toggle
+        entity: lock.in_gate2
+        icon: mdi:gate-arrow-right
+        show_state: true
+        view_layout:
+          position: sidebar
+        name: 입고장 게이트 2
+      - type: custom:flex-table-card
+        title: 입고 물품 리스트
+        entities:
+          - entity: sensor.item_1
+            name: 물품 1
+          - entity: sensor.item_2
+            name: 물품 2
+          - entity: sensor.item_3
+            name: 물품 3
+          - entity: sensor.item_4
+            name: 물품 4
+          - entity: sensor.item_5
+            name: 물품 5
+          - entity: sensor.item_6
+            name: 물품 6
+          - entity: sensor.item_7
+            name: 물품 7
+          - entity: sensor.item_8
+            name: 물품 8
+          - entity: sensor.item_9
+            name: 물품 9
+          - entity: sensor.item_10
+            name: 물품 10
+        columns:
+          - name: 항목
+            data: name
+            align: center
+          - name: 값
+            data: state
+            align: center
+          - name: 재고
+            data: item_status
+            align: center
+          - name: 사용 가능 여부
+            data: availability
+            align: center
+        view_layout:
+          position: main
+      - type: markdown
+        content: |
+          <ha-alert alert-type="warning">**재고 부족 알림**</ha-alert>
+          다음 항목의 재고가 부족합니다:
+          - item 2
+      - type: markdown
+        content: |
+          <ha-alert alert-type="warning">**재고 초과 알림**</ha-alert>
+          다음 항목의 재고가 초과되었습니다:
+          - item 8
+      - type: entities
+        entities:
+          - entity: switch.in_sensor1
+            name: 입고장 - 스위치1
+            card_mod:
+              style: |
+                :host {
+                  --card-mod-icon-color:
+                    {% if is_state('switch.in_sensor1', 'on') %}
+                    #FF9913       ;
+                    {% else %}
+                    #6c6f85 ;
+                    {% endif %};
+          - entity: switch.in_sensor2
+            name: 입고장 - 스위치2
+            card_mod:
+              style: |
+                :host {
+                  --card-mod-icon-color:
+                    {% if is_state('switch.in_sensor2', 'on') %}
+                    #FF9913      ;
+                    {% else %}
+                    #6c6f85 ;
+                    {% endif %};
+          - entity: switch.in_sensor3
+            name: 입고장 - 스위치3
+            card_mod:
+              style: |
+                :host {
+                  --card-mod-icon-color:
+                    {% if is_state('switch.in_sensor3', 'on') %}
+                    #4CAF50;
+                    {% else %}
+                    #6c6f85;
+                    {% endif %};
+                  --card-mod-icon:
+                    {% if is_state('switch.in_sensor3', 'on') %}
+                    mdi:boom-gate-up;
+                    {% else %}
+                    mdi:boom-gate;
+                    {% endif %};
+          - entity: switch.in_sensor4
+            name: 입고장 - 스위치4
+            card_mod:
+              style: |
+                :host {
+                  --card-mod-icon-color:
+                    {% if is_state('switch.in_sensor4', 'on') %}
+                    #388E3C;
+                    {% else %}
+                    #6c6f85 ;
+                    {% endif %};
+                  --card-mod-icon:
+                    {% if is_state('switch.in_sensor4', 'on') %}
+                    mdi:video;
+                    {% else %}
+                    mdi:video-off;
+                    {% endif %};
+        view_layout:
+          position: sidebar
+        title: 입고장 - 제어
+  - type: sidebar
+    path: out
+    icon: ''
+    title: 출고장
+    cards:
+      - type: picture-elements
+        title: 출고장
+        elements:
+          - type: state-icon
+            entity: lock.out_gate1
+            title: Out-OutGate1
+            icon: mdi:gate-arrow-right
+            style:
+              left: 3%
+              top: 76%
+              '--mdc-icon-size': 70px
+          - type: state-icon
+            entity: lock.out_gate2
+            title: Out-OutGate2
+            icon: mdi:gate-arrow-right
+            style:
+              left: 93%
+              top: 76%
+              '--mdc-icon-size': 70px
+          - type: state-icon
+            entity: switch.out_sensor1
+            title: Out-OutSensor1
+            icon: ''
+            style:
+              left: 24%
+              top: 76%
+              '--mdc-icon-size': 70px
+            card_mod:
+              style: |
+                :host {
+                  --card-mod-icon-color:
+                    {% if is_state('switch.out_sensor1', 'on') %}
+                    #FF9913;
+                    {% else %}
+                    #6c6f85 ;
+                    {% endif %};
+          - type: state-icon
+            entity: switch.out_sensor2
+            title: Out-OutSensor2
+            icon: ''
+            style:
+              left: 44%
+              top: 76%
+              '--mdc-icon-size': 70px
+            card_mod:
+              style: |
+                :host {
+                  --card-mod-icon-color:
+                    {% if is_state('switch.out_sensor2', 'on') %}
+                    #FF9913;
+                    {% else %}
+                    #6c6f85 ;
+                    {% endif %};
+          - type: state-icon
+            entity: switch.out_sensor3
+            title: Out-OutSensor3
+            icon: ''
+            style:
+              left: 64%
+              top: 76%
+              '--mdc-icon-size': 70px
+            card_mod:
+              style: |
+                :host {
+                  --card-mod-icon-color:
+                    {% if is_state('switch.out_sensor3', 'on') %}
+                    #4CAF50;
+                    {% else %}
+                    #6c6f85;
+                    {% endif %};
+                  --card-mod-icon:
+                    {% if is_state('switch.out_sensor3', 'on') %}
+                    mdi:boom-gate-up;
+                    {% else %}
+                    mdi:boom-gate;
+                    {% endif %};
+          - type: state-icon
+            entity: switch.out_sensor4
+            title: Out-OutSensor4
+            icon: ''
+            style:
+              left: 83%
+              top: 79%
+              '--mdc-icon-size': 70px
+            card_mod:
+              style: |
+                :host {
+                  --card-mod-icon-color:
+                    {% if is_state('switch.out_sensor4', 'on') %}
+                    #388E3C;
+                    {% else %}
+                    #6c6f85 ;
+                    {% endif %};
+                  --card-mod-icon:
+                    {% if is_state('switch.out_sensor4', 'on') %}
+                    mdi:video;
+                    {% else %}
+                    mdi:video-off;
+                    {% endif %};
+        image: local/out.png
+        dark_mode_image: local/out.png
+      - show_name: true
+        show_icon: true
+        type: button
+        tap_action:
+          action: toggle
+        show_state: true
+        icon: mdi:gate-arrow-right
+        view_layout:
+          position: sidebar
+        entity: lock.out_gate1
+        name: 출고장 게이트 1
+      - show_name: true
+        show_icon: true
+        type: button
+        tap_action:
+          action: toggle
+        entity: lock.out_gate2
+        icon: mdi:gate-arrow-right
+        show_state: true
+        view_layout:
+          position: sidebar
+        name: 출고장 게이트 2
+      - type: custom:flex-table-card
+        title: 출고 물품 체크리스트
+        entities:
+          - sensor.product_1
+          - sensor.product_2
+          - sensor.product_3
+          - sensor.product_4
+          - sensor.product_5
+        columns:
+          - name: Index
+            data: name
+            align: center
+          - name: Product Name
+            data: state
+            align: center
+          - name: Quantity
+            data: qty
+            align: center
+          - name: Date
+            data: date
+            align: center
+      - type: custom:mini-graph-card
+        name: 출고 현황
+        entities:
+          - entity: sensor.outbound_scheduled
+            name: 출고 예정
+            color: blue
+          - entity: sensor.outbound_in_progress
+            name: 출고 중
+            color: orange
+          - entity: sensor.outbound_completed
+            name: 완료
+            color: green
+        show:
+          legend: true
+          icon: false
+          labels: true
+          state: false
+      - type: custom:mini-graph-card
+        name: 출고량 그래프
+        entities:
+          - entity: sensor.daily_shipment
+            name: 일별 출고량
+            color: '#abdce8'
+          - entity: sensor.weekly_shipment
+            name: 주별 출고량
+            color: '#4e88e0'
+          - entity: sensor.monthly_shipment
+            name: 월별 출고량
+            color: '#0784f9'
+        show:
+          graph: bar
+          legend: true
+        hours_to_show: 24
+        points_per_hour: 1
+        group_by: date
+      - type: entities
+        entities:
+          - entity: switch.out_sensor1
+            name: 출고장 - 스위치1
+            card_mod:
+              style: |
+                :host {
+                  --card-mod-icon-color:
+                    {% if is_state('switch.out_sensor1', 'on') %}
+                    #FF9913;
+                    {% else %}
+                    #6c6f85;
+                    {% endif %};
+          - entity: switch.out_sensor2
+            name: 출고장 - 스위치2
+            card_mod:
+              style: |
+                :host {
+                  --card-mod-icon-color:
+                    {% if is_state('switch.out_sensor2', 'on') %}
+                    #FF9913;
+                    {% else %}
+                    #6c6f85;
+                    {% endif %};
+          - entity: switch.out_sensor3
+            name: 출고장 - 스위치3
+            card_mod:
+              style: |
+                :host {
+                  --card-mod-icon-color:
+                    {% if is_state('switch.out_sensor3', 'on') %}
+                    #4CAF50;
+                    {% else %}
+                    #6c6f85;
+                    {% endif %};
+                  --card-mod-icon:
+                    {% if is_state('switch.out_sensor3', 'on') %}
+                    mdi:boom-gate-up;
+                    {% else %}
+                    mdi:boom-gate;
+                    {% endif %};
+          - entity: switch.out_sensor4
+            name: 출고장 - 스위치4
+            card_mod:
+              style: |
+                :host {
+                  --card-mod-icon-color:
+                    {% if is_state('switch.out_sensor4', 'on') %}
+                    #388E3C;
+                    {% else %}
+                    #6c6f85;
+                    {% endif %};
+                  --card-mod-icon:
+                    {% if is_state('switch.out_sensor4', 'on') %}
+                    mdi:video;
+                    {% else %}
+                    mdi:video-off;
+                    {% endif %};
+        title: 출고장 - 제어
+        view_layout:
+          position: sidebar
+  - type: sections
+    max_columns: 3
+    title: 검수
+    path: inspect
+    sections:
+      - type: grid
+        cards:
+          - type: heading
+            icon: mdi:boom-gate-outline
+            heading_style: title
+            heading: 생산라인1
+          - type: iframe
+            url: /local/inspect3.html
+            view_layout:
+              position: main
+            aspect_ratio: 100%
+            grid_options:
+              columns: full
+              rows: 5
+        column_span: 2
+      - type: grid
+        cards:
+          - type: heading
+            icon: mdi:monitor-small
+            heading: Passed Products 1
+            heading_style: title
+          - type: entities
+            entities:
+              - entity: sensor.custom_passed_product1
+                name: Product Status
+                icon: mdi:monitor-eye
+              - type: attribute
+                entity: sensor.custom_passed_product1
+                attribute: production_date
+                name: Production Date
+                icon: mdi:monitor-eye
+              - type: attribute
+                entity: sensor.custom_passed_product1
+                attribute: serial_number
+                name: Serial Number
+                icon: mdi:monitor-eye
+              - type: attribute
+                entity: sensor.custom_passed_product1
+                attribute: production_line
+                name: Production Line
+                icon: mdi:monitor-eye
+              - type: attribute
+                entity: sensor.custom_passed_product1
+                attribute: version
+                name: Version
+                icon: mdi:monitor-eye
+            grid_options:
+              columns: full
+              rows: 5
+            title: 생산라인 1 제품
+        column_span: 1
+      - type: grid
+        cards:
+          - type: heading
+            icon: mdi:boom-gate-outline
+            heading_style: title
+            heading: 생산라인2
+          - type: iframe
+            url: /local/inspect1.html
+            view_layout:
+              position: main
+            aspect_ratio: 100%
+            grid_options:
+              columns: full
+              rows: 5
+        column_span: 2
+      - type: grid
+        cards:
+          - type: heading
+            icon: mdi:monitor-small
+            heading: Passed Products 2
+            heading_style: title
+          - type: entities
+            entities:
+              - entity: sensor.custom_passed_product2
+                name: Product Status
+                icon: mdi:monitor-eye
+              - type: attribute
+                entity: sensor.custom_passed_product2
+                attribute: production_date
+                name: Production Date
+                icon: mdi:monitor-eye
+              - type: attribute
+                entity: sensor.custom_passed_product2
+                attribute: serial_number
+                name: Serial Number
+                icon: mdi:monitor-eye
+              - type: attribute
+                entity: sensor.custom_passed_product2
+                attribute: production_line
+                name: Production Line
+                icon: mdi:monitor-eye
+              - type: attribute
+                entity: sensor.custom_passed_product2
+                attribute: version
+                name: Version
+                icon: mdi:monitor-eye
+            grid_options:
+              columns: full
+              rows: 5
+            title: 생산라인 2 제품
+        column_span: 1
+    cards: []

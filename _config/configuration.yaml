@@ -1,0 +1,557 @@
+# Loads default set of integrations. Do not remove.
+default_config:
+
+# Load frontend themes from the themes folder
+frontend:
+  themes: !include_dir_merge_named themes
+  extra_module_url:
+    - /hacsfiles/lovelace-card-mod/card-mod.js
+
+automation: !include automations.yaml
+script: !include scripts.yaml
+scene: !include scenes.yaml
+
+logger:
+  default: info
+  logs:
+    homeassistant.components.cloud: debug
+
+# Load some integrations for Demo & Dev
+demo:
+python_script:
+tia_fake_hub:
+
+favicon:
+  title: TIA
+  icon_path: /local/favicons/
+
+lovelace:
+  mode: yaml
+  resources:
+    - url: /local/mini-graph-card-bundle.js?v=0.12.1
+      type: module
+    - url: /local/flex-table-card.js
+      type: module
+    - url: /local/auto-entities.js
+      type: module
+    - url: /local/button-card.js
+      type: module
+    - url: /local/card-mod.js
+      type: module
+    - url: /local/sunsynk-power-flow-card.js?ver=1.7.6
+      type: module
+    - url: /local/plotly-graph-card.js
+      type: module
+  dashboards:
+    lovelace-overview:
+      mode: yaml
+      title: 공장 현황
+      icon: mdi:monitor
+      show_in_sidebar: true
+      filename: dashboards/overview.yaml
+    lovelace-status:
+      mode: yaml
+      title: 세부 현황
+      icon: mdi:factory
+      show_in_sidebar: true
+      filename: dashboards/status.yaml
+    lovelace-safety:
+      mode: yaml
+      title: 안전
+      icon: mdi:fire-alert
+      show_in_sidebar: true
+      filename: dashboards/safety.yaml
+    lovelace-security:
+      mode: yaml
+      title: 보안
+      icon: mdi:security
+      show_in_sidebar: true
+      filename: dashboards/security.yaml
+    lovelace-custom-energy:
+      mode: yaml
+      title: Custom Energy
+      icon: mdi:transmission-tower
+      show_in_sidebar: true
+      filename: dashboards/custom_energy.yaml
+
+sensor:
+  - platform: template
+    sensors:
+      # 입고장
+      item_1:
+        friendly_name: "item 1"
+        value_template: "Material 1"
+        attribute_templates:
+          item_status: "In Stock"
+          availability: "O"
+      item_2:
+        friendly_name: "item 2"
+        value_template: "Material 2"
+        attribute_templates:
+          item_status: "Out of Stock"
+          availability: "X"
+      item_3:
+        friendly_name: "item 3"
+        value_template: "Material 3"
+        attribute_templates:
+          item_status: "In Stock"
+          availability: "O"
+      item_4:
+        friendly_name: "item 4"
+        value_template: "Component 1"
+        attribute_templates:
+          item_status: "In Stock"
+          availability: "O"
+      item_5:
+        friendly_name: "item 5"
+        value_template: "Component 2"
+        attribute_templates:
+          item_status: "In Stock"
+          availability: "O"
+      item_6:
+        friendly_name: "item 6"
+        value_template: "Component 3"
+        attribute_templates:
+          item_status: "In Stock"
+          availability: "O"
+      item_7:
+        friendly_name: "item 7"
+        value_template: "Component 4"
+        attribute_templates:
+          item_status: "In Stock"
+          availability: "O"
+      item_8:
+        friendly_name: "item 8"
+        value_template: "Packaging 1"
+        attribute_templates:
+          item_status: "In Stock"
+          availability: "X"
+      item_9:
+        friendly_name: "item 9"
+        value_template: "Packaging 2"
+        attribute_templates:
+          item_status: "In Stock"
+          availability: "O"
+      item_10:
+        friendly_name: "item 10"
+        value_template: "Packaging 3"
+        attribute_templates:
+          item_status: "In Stock"
+          availability: "O"
+
+        # value_template = 값, 데이터를 반환하는 부분
+        # attribute_templates = 각 센서에 대한 추가 정보를 설정하는 곳
+
+      # 출고장
+      product_1:
+        friendly_name: "1"
+        value_template: "Product 1"
+        attribute_templates:
+          qty: "100"
+          date: "2024-11-21"
+      product_2:
+        friendly_name: "2"
+        value_template: "Product 2"
+        attribute_templates:
+          qty: "100"
+          date: "2024-11-21"
+
+      product_3:
+        friendly_name: "3"
+        value_template: "Product 3"
+        attribute_templates:
+          qty: "200"
+          date: "2024-11-21"
+
+      product_4:
+        friendly_name: "4"
+        value_template: "Product 4"
+        attribute_templates:
+          qty: "200"
+          date: "2024-11-21"
+
+      product_5:
+        friendly_name: "5"
+        value_template: "Product 5"
+        attribute_templates:
+          qty: "200"
+          date: "2024-11-21"
+
+      # Security 대시보드
+      employee_1:
+        friendly_name: "Hong"
+        value_template: "Employee1"
+        attribute_templates:
+          department: "line1"
+          entry_time: "09:00"
+          exit_time: "18:00"
+          entry_location: "Front Gate1"
+
+      employee_2:
+        friendly_name: "Kim"
+        value_template: "Employee2"
+        attribute_templates:
+          department: "line1"
+          entry_time: "09:15"
+          exit_time: "18:15"
+          entry_location: "Front Gate1"
+
+      employee_3:
+        friendly_name: "Lee Young Hee"
+        value_template: "Employee3"
+        attribute_templates:
+          department: "line2"
+          entry_time: "09:30"
+          exit_time: "18:30"
+          entry_location: "Front Gate1"
+
+      employee_4:
+        friendly_name: "Park Min Su"
+        value_template: "Employee4"
+        attribute_templates:
+          department: "line1"
+          entry_time: "09:05"
+          exit_time: "18:05"
+          entry_location: "Left Gate1"
+
+      employee_5:
+        friendly_name: "Choi Ji Woo"
+        value_template: "Employee5"
+        attribute_templates:
+          department: "line2"
+          entry_time: "09:20"
+          exit_time: "18:20"
+          entry_location: "Left Gate2"
+
+      employee_6:
+        friendly_name: "Jung Woo Sung"
+        value_template: "Employee6"
+        attribute_templates:
+          department: "line2"
+          entry_time: "09:10"
+          exit_time: "18:10"
+          entry_location: "Right Gate2"
+
+      employee_7:
+        friendly_name: "Han Ji Min"
+        value_template: "Employee7"
+        attribute_templates:
+          department: "line1"
+          entry_time: "09:25"
+          exit_time: "18:25"
+          entry_location: "Right Gate2"
+
+      employee_8:
+        friendly_name: "Lee Byung Hun"
+        value_template: "Employee8"
+        attribute_templates:
+          department: "line2"
+          entry_time: "09:35"
+          exit_time: "18:35"
+          entry_location: "Front Gate2"
+
+      employee_9:
+        friendly_name: "Kim Tae Hee"
+        value_template: "Employee9"
+        attribute_templates:
+          department: "line1"
+          entry_time: "09:40"
+          exit_time: "18:40"
+          entry_location: "Back Gate1"
+
+      employee_10:
+        friendly_name: "Song Joong Ki"
+        value_template: "Employee10"
+        attribute_templates:
+          department: "line2"
+          entry_time: "09:45"
+          exit_time: "18:45"
+          entry_location: "Front Gate2"
+
+      employee_11:
+        friendly_name: "Kang Dong Won"
+        value_template: "Employee11"
+        attribute_templates:
+          department: "line1"
+          entry_time: "08:50"
+          exit_time: "17:50"
+          entry_location: "Front Gate3"
+
+      employee_12:
+        friendly_name: "Ha Ji Won"
+        value_template: "Employee12"
+        attribute_templates:
+          department: "line1"
+          entry_time: "09:15"
+          exit_time: "18:15"
+          entry_location: "Left Gate2"
+
+      employee_13:
+        friendly_name: "Jo In Sung"
+        value_template: "Employee13"
+        attribute_templates:
+          department: "line2"
+          entry_time: "08:30"
+          exit_time: "17:30"
+          entry_location: "Right Gate1"
+
+      employee_14:
+        friendly_name: "Shin Min Ah"
+        value_template: "Employee14"
+        attribute_templates:
+          department: "line2"
+          entry_time: "09:00"
+          exit_time: "18:00"
+          entry_location: "Front Gate1"
+
+      employee_15:
+        friendly_name: "Kim Woo Bin"
+        value_template: "Employee15"
+        attribute_templates:
+          department: "line2"
+          entry_time: "08:45"
+          exit_time: "17:45"
+          entry_location: "Back Gate1"
+
+      employee_16:
+        friendly_name: "Suzy Bae"
+        value_template: "Employee16"
+        attribute_templates:
+          department: "line1"
+          entry_time: "09:30"
+          exit_time: "18:30"
+          entry_location: "Back Gate1"
+
+      employee_17:
+        friendly_name: "Hyun Bin"
+        value_template: "Employee17"
+        attribute_templates:
+          department: "line1"
+          entry_time: "09:10"
+          exit_time: "18:10"
+          entry_location: "Right Gate2"
+
+      employee_18:
+        friendly_name: "Kim So Yeon"
+        value_template: "Employee18"
+        attribute_templates:
+          department: "line2"
+          entry_time: "08:40"
+          exit_time: "17:40"
+          entry_location: "Front Gate2"
+
+      employee_19:
+        friendly_name: "Park Seo Joon"
+        value_template: "Employee19"
+        attribute_templates:
+          department: "line1"
+          entry_time: "09:20"
+          exit_time: "18:20"
+          entry_location: "Back Gate1"
+
+      employee_20:
+        friendly_name: "IU"
+        value_template: "Employee20"
+        attribute_templates:
+          department: "line2"
+          entry_time: "09:35"
+          exit_time: "18:35"
+          entry_location: "Left Gate1"
+
+      # 출고 기본값
+      outbound_default:
+        friendly_name: "출고 default"
+        value_template: 0
+
+      # 출고 예정
+      outbound_scheduled:
+        friendly_name: "출고 예정"
+        value_template: 17
+
+      # 출고 중
+      outbound_in_progress:
+        friendly_name: "출고 중"
+        value_template: 3
+
+      # 출고 완료
+      outbound_completed:
+        friendly_name: "출고 완료"
+        value_template: 80
+
+      # 출고량 일, 주, 월
+      daily_shipment:
+        friendly_name: "Daily Shipment"
+        value_template: 100
+
+      weekly_shipment:
+        friendly_name: "Weekly Shipment"
+        value_template: 1000
+
+      monthly_shipment:
+        friendly_name: "Monthly Shipment"
+        value_template: 15000
+
+      # custom data
+      custom_outside_temperature:
+        friendly_name: "Temperature"
+        unit_of_measurement: "°C"
+        device_class: "temperature"
+        value_template: "{{ range(30, 70) | random }}"
+
+      custom_carbon_monoxide:
+        friendly_name: "Carbon monoxide"
+        unit_of_measurement: "ppm"
+        device_class: "carbon_monoxide"
+        value_template: "{{ range(0, 51) | random }}"
+
+      custom_carbon_dioxide:
+        friendly_name: "Carbon dioxide"
+        unit_of_measurement: "ppm"
+        device_class: "carbon_dioxide"
+        value_template: "{{ range(400, 1001) | random }}"
+
+      custom_power_consumption:
+        friendly_name: "Power consumption"
+        unit_of_measurement: "W"
+        device_class: "power"
+        value_template: "{{ range(500, 20001) | random }}"
+
+      custom_air_quality_1:
+        friendly_name: "Demo Air Quality 1"
+        unit_of_measurement: µg/m³
+        value_template: "{{ range(10, 91) | random }}"
+
+      custom_air_quality_2:
+        friendly_name: "Demo Air Quality 2"
+        unit_of_measurement: µg/m³
+        value_template: "{{ range(10, 11) | random }}"
+
+      custom_vibration_sensor1:
+        friendly_name: "Demo Vibration Sensor1"
+        unit_of_measurement: "g"
+        value_template: "{{ states('input_number.custom_vibration_sensor1') }}"
+
+      custom_vibration_sensor2:
+        friendly_name: "Demo Vibration Sensor2"
+        unit_of_measurement: "g"
+        value_template: "{{ states('input_number.custom_vibration_sensor2') }}"
+
+      custom_vibration_sensor3:
+        friendly_name: "Demo Vibration Sensor3"
+        unit_of_measurement: "g"
+        value_template: "{{ states('input_number.custom_vibration_sensor3') }}"
+
+      # 검수
+      custom_passed_product1:
+        friendly_name: "Passed Product 1"
+        value_template: "Pass"
+        attribute_templates:
+          status: "Pass"
+          production_date: "{{ now().strftime('%Y-%m-%d %H:%M:%S') }}"
+          serial_number: >
+            {% set letters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ' %}
+            {{ (letters | random) ~ (letters | random) ~ (letters | random) ~ (letters | random) ~ '%04d' | format(range(0, 10000) | random) ~ (letters | random) ~ (letters | random) ~ (letters | random) ~ (letters | random) ~ '%04d' | format(range(0, 10000) | random) }}
+          production_line: "Line 1"
+          version: "v1.0"
+
+      custom_passed_product2:
+        friendly_name: "Passed Product 2"
+        value_template: "Pass"
+        attribute_templates:
+          status: "Pass"
+          production_date: "{{ now().strftime('%Y-%m-%d %H:%M:%S') }}"
+          serial_number: >
+            {% set letters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ' %}
+            {{ (letters | random) ~ (letters | random) ~ (letters | random) ~ (letters | random) ~ '%04d' | format(range(0, 10000) | random) ~ (letters | random) ~ (letters | random) ~ (letters | random) ~ (letters | random) ~ '%04d' | format(range(0, 10000) | random) }}
+          production_line: "Line 2"
+          version: "v1.0"
+
+      # co average
+      average_line1_co_value:
+        friendly_name: "Average Line1 CO Value"
+        unit_of_measurement: "ppm"
+        value_template: >
+          {% set co_1 = states('sensor.tia_fake_hub_line1_co_1') | float(0) %}
+          {% set co_2 = states('sensor.tia_fake_hub_line1_co_2') | float(0) %}
+          {% set co_3 = states('sensor.tia_fake_hub_line1_co_3') | float(0) %}
+          {% set co_4 = states('sensor.tia_fake_hub_line1_co_4') | float(0) %}
+          {% set co_5 = states('sensor.tia_fake_hub_line1_co_5') | float(0) %}
+          {% set co_6 = states('sensor.tia_fake_hub_line1_co_6') | float(0) %}
+          {% set co_7 = states('sensor.tia_fake_hub_line1_co_7') | float(0) %}
+
+          {% set line1_co_average = (co_1 + co_2 + co_3 + co_4 + co_5 + co_6 + co_7) / 7 %}
+          {{ line1_co_average | round(0) | int }}
+
+      # co2 average
+      average_line1_co2_value:
+        friendly_name: "Average Line1 CO2 Value"
+        unit_of_measurement: "ppm"
+        value_template: >
+          {% set co2_1 = states('sensor.tia_fake_hub_line1_co2_1') | float(0) %}
+          {% set co2_2 = states('sensor.tia_fake_hub_line1_co2_2') | float(0) %}
+          {% set co2_3 = states('sensor.tia_fake_hub_line1_co2_3') | float(0) %}
+          {% set co2_4 = states('sensor.tia_fake_hub_line1_co2_4') | float(0) %}
+          {% set co2_5 = states('sensor.tia_fake_hub_line1_co2_5') | float(0) %}
+          {% set co2_6 = states('sensor.tia_fake_hub_line1_co2_6') | float(0) %}
+          {% set co2_7 = states('sensor.tia_fake_hub_line1_co2_7') | float(0) %}
+          {% set line1_co2_average = (co2_1 + co2_2 + co2_3 + co2_4 + co2_5 + co2_6 + co2_7) / 7 %}
+          {{ line1_co2_average | round(0) | int }}
+
+      # co average
+      average_line2_co_value:
+        friendly_name: "Average Line2 CO Value"
+        unit_of_measurement: "ppm"
+        value_template: >
+          {% set co_1 = states('sensor.tia_fake_hub_line1_co_1') | float(0) %}
+          {% set co_2 = states('sensor.tia_fake_hub_line1_co_2') | float(0) %}
+          {% set co_3 = states('sensor.tia_fake_hub_line1_co_3') | float(0) %}
+          {% set co_4 = states('sensor.tia_fake_hub_line1_co_4') | float(0) %}
+          {% set co_5 = states('sensor.tia_fake_hub_line1_co_5') | float(0) %}
+          {% set co_6 = states('sensor.tia_fake_hub_line1_co_6') | float(0) %}
+          {% set co_7 = states('sensor.tia_fake_hub_line1_co_7') | float(0) %}
+          {% set co_8 = states('sensor.tia_fake_hub_line1_co_8') | float(0) %}
+          {% set co_9 = states('sensor.tia_fake_hub_line1_co_9') | float(0) %}
+          {% set co_10 = states('sensor.tia_fake_hub_line1_co_10') | float(0) %}
+          {% set co_11 = states('sensor.tia_fake_hub_line1_co_11') | float(0) %}
+          {% set co_12 = states('sensor.tia_fake_hub_line1_co_12') | float(0) %}
+          {% set line2_co_average = (co_1 + co_2 + co_3 + co_4 + co_5 + co_6 + co_7 + co_8 + co_9 + co_10 + co_11 + co_12) / 12 %}
+          {{ line2_co_average | round(0) | int }}
+
+      # co2 average
+      average_line2_co2_value:
+        friendly_name: "Average Line2 CO2 Value"
+        unit_of_measurement: "ppm"
+        value_template: >
+          {% set co2_1 = states('sensor.tia_fake_hub_line1_co2_1') | float(0) %}
+          {% set co2_2 = states('sensor.tia_fake_hub_line1_co2_2') | float(0) %}
+          {% set co2_3 = states('sensor.tia_fake_hub_line1_co2_3') | float(0) %}
+          {% set co2_4 = states('sensor.tia_fake_hub_line1_co2_4') | float(0) %}
+          {% set co2_5 = states('sensor.tia_fake_hub_line1_co2_5') | float(0) %}
+          {% set co2_6 = states('sensor.tia_fake_hub_line1_co2_6') | float(0) %}
+          {% set co2_7 = states('sensor.tia_fake_hub_line1_co2_7') | float(0) %}
+          {% set co2_8 = states('sensor.tia_fake_hub_line1_co2_8') | float(0) %}
+          {% set co2_9 = states('sensor.tia_fake_hub_line1_co2_9') | float(0) %}
+          {% set co2_10 = states('sensor.tia_fake_hub_line1_co2_10') | float(0) %}
+          {% set co2_11 = states('sensor.tia_fake_hub_line1_co2_11') | float(0) %}
+          {% set co2_12 = states('sensor.tia_fake_hub_line1_co2_12') | float(0) %}
+          {% set line2_co2_average = (co2_1 + co2_2 + co2_3 + co2_4 + co2_5 + co2_6 + co2_7 + co2_8 + co2_9 + co2_10 + co2_11 + co2_12) / 12 %}
+          {{ line2_co2_average | round(0) | int }}
+
+input_number:
+  custom_vibration_sensor1:
+    name: "Vibration Sensor 1"
+    min: 0.1
+    max: 4.5
+    step: 0.1
+
+  custom_vibration_sensor2:
+    name: "Vibration Sensor 2"
+    min: 0.1
+    max: 4.5
+    step: 0.1
+
+  custom_vibration_sensor3:
+    name: "Vibration Sensor 3"
+    min: 0.1
+    max: 4.5
+    step: 0.1

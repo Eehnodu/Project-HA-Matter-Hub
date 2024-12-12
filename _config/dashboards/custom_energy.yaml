@@ -1,0 +1,251 @@
+views:
+  - title: custom energy
+    type: sidebar
+    cards:
+      - type: entities
+        entities:
+          - entity: sensor.total_energy_kwh
+          - entity: sensor.total_energy_mwh
+          - entity: sensor.total_energy_mwh_cost
+            name: total energy mwh cost
+          - entity: sensor.total_gas_ft3
+          - entity: sensor.total_gas_m3
+          - entity: sensor.total_energy_mwh_cost
+            name: total gas m3 cost
+        view_layout:
+          position: sidebar
+      - type: custom:plotly-graph
+        entities:
+          - sensor.fake_aux_1
+          - sensor.fake_aux_2
+        refresh_interval: 10
+        hours_to_show: 12h
+        layout:
+          xaxis:
+            rangeselector:
+              "y": 1.2
+              buttons:
+                - count: 30
+                  step: minute
+                - count: 1
+                  step: hour
+                - count: 6
+                  step: hour
+                - count: 1
+                  step: day
+                - count: 7
+                  step: day
+        color_scheme: dutch_field
+      - type: custom:sunsynk-power-flow-card
+        cardstyle: full
+        large_font: false
+        title: 공장 에너지 현황
+        title_colour: purple
+        title_size: 32px
+        show_solar: true
+        show_battery: true
+        show_grid: true
+        decimal_places: 2
+        dynamic_line_width: false
+        min_line_width: 1
+        max_line_width: 4
+        wide: false
+        inverter:
+          modern: true
+          colour: grey
+          autarky: power
+          auto_scale: true
+          three_phase: false
+        battery:
+          count: 1
+          energy: 800000
+          shutdown_soc: 50
+          invert_power: false
+          colour: red
+          charge_colour: green
+          show_daily: true
+          animation_speed: 3
+          show_absolute: false
+          auto_scale: true
+          hide_soc: true
+          dynamic_colour: true
+          linear_gradient: true
+          animate: true
+          path_threshold: 100
+          show_remaining_energy: false
+          max_power: 600000
+          soc_end_of_charge: 100
+        solar:
+          colour: orange
+          show_daily: true
+          mppts: 4
+          pv1_name: Energy1
+          pv1_max_power: 200000
+          pv2_name: Energy2
+          pv2_max_power: 200000
+          pv3_name: Energy3
+          pv3_max_power: 200000
+          pv4_name: Energy4
+          pv4_max_power: 200000
+          auto_scale: true
+          dynamic_colour: true
+          efficiency: 2
+          off_threshold: 0
+          display_mode: 1
+          invert_flow: false
+          animation_speed: 3
+          max_power: 4000000
+        load:
+          colour: "#5fb6ad"
+          show_daily: true
+          show_daily_aux: true
+          show_aux: true
+          invert_aux: false
+          show_absolute_aux: false
+          aux_name: Generator
+          aux_type: gen
+          aux_colour: green
+          aux_off_colour: red
+          aux_loads: 2
+          aux_load1_name: Aux load 1
+          aux_load2_name: Aux load 2
+          aux_load1_icon: mdi:air-filter
+          aux_load2_icon: mdi:air-humidifier-off
+          animation_speed: 8
+          max_power: 8000
+          additional_loads: 2
+          load2_name: Line 2
+          load1_icon: mdi:factory
+          load2_icon: mdi:factory
+          auto_scale: true
+          dynamic_colour: true
+          path_theshold: 100
+          off_threshold: 0
+          load1_name: Line 1
+        grid:
+          colour: "#5490c2"
+          export_colour: brown
+          grid_off_colour: red
+          show_daily_buy: true
+          show_daily_sell: true
+          no_grid_colour: "#a40013"
+          show_nonessential: true
+          invert_grid: false
+          nonessential_name: Non Essential
+          nonessential_icon: oven
+          additional_loads: 2
+          load1_name: Load 1
+          load2_name: Load 2
+          load1_icon: mdi:office-building-cog
+          load2_icon: mdi:office-building-marker
+          animation_speed: 8
+          max_power: 8000
+          auto_scale: true
+          off_threshold: 0
+        entities:
+          use_timer_248: switch.sunsynk_toggle_system_time
+          priority_load_243: switch.sunsynk_toggle_priority_load
+          day_battery_charge_70: sensor.fake_total_battery_charge
+          day_battery_discharge_71: sensor.fake_total_battery_discharge
+          day_load_energy_84: sensor.fake_sunsynk_day_load_energy
+          day_grid_import_76: sensor.fake_day_grid_import
+          day_grid_export_77: sensor.fake_day_grid_export
+          day_pv_energy_108: sensor.fake_total_solar_sensor1
+          day_aux_energy: sensor.fake_sunsynk_day_aux_energy
+          inverter_voltage_154: sensor.fake_sunsynk_inverter_voltage
+          inverter_voltage_L2: null
+          inverter_voltage_L3: null
+          load_frequency_192: sensor.fake_sunsynk_load_frequency
+          inverter_current_164: sensor.fake_sunsynk_inverter_current
+          inverter_current_L2: null
+          inverter_current_L3: null
+          inverter_power_175: sensor.fake_sunsynk_inverter_power
+          grid_power_169: sensor.fake_sunsynk_grid_power
+          pv1_power_186: sensor.tia_fake_hub_fake_solar_power_sensor1
+          pv2_power_187: sensor.tia_fake_hub_fake_solar_power_sensor2
+          pv3_power_188: sensor.tia_fake_hub_fake_solar_power_sensor3
+          pv4_power_189: sensor.tia_fake_hub_fake_solar_power_sensor4
+          pv1_voltage_109: sensor.tia_fake_hub_fake_solar_voltage_sensor1
+          pv2_voltage_111: sensor.tia_fake_hub_fake_solar_voltage_sensor2
+          pv3_voltage_113: sensor.tia_fake_hub_fake_solar_voltage_sensor3
+          pv4_voltage_115: sensor.tia_fake_hub_fake_solar_voltage_sensor4
+          pv1_current_110: sensor.tia_fake_hub_fake_solar_ampere_sensor1
+          pv2_current_112: sensor.tia_fake_hub_fake_solar_ampere_sensor2
+          pv3_current_114: sensor.tia_fake_hub_fake_solar_ampere_sensor3
+          pv4_current_116: sensor.tia_fake_hub_fake_solar_ampere_sensor4
+          battery_power_190: sensor.fake_battery_power_sensor
+          battery_voltage_183: sensor.fake_battery_voltage_sensor
+          battery_current_191: sensor.fake_battery_ampere_sensor
+          battery_soc_184: sensor.fake_battery_soc_sensor
+          radiator_temp_91: sensor.tia_fake_hub_fake_radiator_temperature_sensor
+          dc_transformer_temp_90: sensor.tia_fake_hub_fake_dc_transformer_temperature_sensor
+          essential_power: none
+          essential_load1: sensor.fake_tuya_geyser_current_consumption
+          essential_load2: sensor.fake_load2_power
+          essential_load1_extra: sensor.daily_geyser_energy
+          essential_load2_extra: sensor.load2_extra
+          nonessential_power: none
+          non_essential_load1: sensor.fake_nonessential1_power
+          non_essential_load2: sensor.fake_nonessential2_power
+          grid_ct_power_172: sensor.fake_sunsynk_grid_ct_power
+          grid_ct_power_L2: null
+          grid_ct_power_L3: null
+          grid_connected_status_194: binary_sensor.sunsynk_grid_connected_status
+          inverter_status_59: sensor.sunsynk_overall_state
+          aux_power_166: sensor.fake_sunsynk_aux_power
+          aux_connected_status: binary_sensor.sunsynk_aux_connected_status
+          remaining_solar: sensor.solcast_forecast_remaining_today
+          battery_temp_182: sensor.tia_fake_hub_fake_battery_battery_temperature
+          environment_temp: sensor.outside_temperature
+          prog1_time: sensor.sunsynk_time_slot_1
+          prog1_capacity: number.sunsynk_prog1_capacity
+          prog1_charge: switch.sunsynk_prog1_grid_charge
+          prog2_time: sensor.sunsynk_time_slot_2
+          prog2_capacity: number.sunsynk_prog2_capacity
+          prog2_charge: switch.sunsynk_prog2_grid_charge
+          prog3_time: sensor.sunsynk_time_slot_3
+          prog3_capacity: number.sunsynk_prog3_capacity
+          prog3_charge: switch.sunsynk_prog3_grid_charge
+          prog4_time: sensor.sunsynk_time_slot_4
+          prog4_capacity: number.sunsynk_prog4_capacity
+          prog4_charge: switch.sunsynk_prog4_grid_charge
+          prog5_time: sensor.sunsynk_time_slot_5
+          prog5_capacity: number.sunsynk_prog5_capacity
+          prog5_charge: switch.sunsynk_prog5_grid_charge
+          prog6_time: sensor.sunsynk_time_slot_6
+          prog6_capacity: number.sunsynk_prog6_capacity
+          prog6_charge: switch.sunsynk_prog6_grid_charge
+          energy_cost_buy: sensor.fake_tibber_energy_cost_buy
+          energy_cost_sell: sensor.tibber_energy_cost_sell
+          solar_sell_247: switch.sunsynk_toggle_solar_sell
+          aux_load1: sensor.fake_aux_1
+          aux_load2: sensor.fake_aux_2
+          aux_load1_extra: sensor.fake_aux_1_extra
+          aux_load2_extra: sensor.fake_aux_2_extra
+          load_power_L1: null
+          load_power_L2: null
+          load_power_L3: null
+          total_pv_generation: null
+          battery_status: null
+      - type: custom:plotly-graph
+        entities:
+          - entity: sensor.fake_sunsynk_day_aux_energy
+            x: $ex ys
+            type: histogram
+          - entity: sensor.fake_aux_2_extra
+            x: $ex ys
+            type: histogram
+          - entity: sensor.fake_aux_2
+            x: $ex ys
+            type: histogram
+        title: 테스트 중
+        hours_to_show: 10d
+        raw_plotly_config: true
+        layout:
+          margin:
+            t: 0
+            l: 50
+            b: 40
+          height: 285
+          xaxis:
+            autorange: true

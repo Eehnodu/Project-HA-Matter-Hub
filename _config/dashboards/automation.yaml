@@ -1,0 +1,27 @@
+---
+views:
+  - title: 자동화
+    sections:
+    - type: grid
+      cards:
+      - type: heading
+        heading_style: title
+        heading: 자동화 목록
+      - type: custom:auto-entities
+        card:
+          type: entities
+        filter:
+          include:
+          - entity_id: automation.*
+    - type: grid
+      cards:
+      - type: heading
+        heading_style: title
+        heading: '자동화 설정 '
+      - type: markdown
+        content: "**Setting Automation** \n\n자동화를 설정하려면 [이 링크를 누르세요](http://homeassistant:8123/config/automation/dashboard)."
+      column_span: 1
+    type: sections
+    max_columns: 2
+    cards: []
+    path: auto

@@ -1,0 +1,27 @@
+{
+  "state": {
+    "_": {
+      "idle": "[%key:common::state::idle%]",
+      "streaming": "[%key:component::camera::state::streaming%]"
+    }
+  },
+  "config": {
+    "error": {
+      "unknown": "[%key:common::config_flow::error::unknown%]",
+      "alias_not_found": "No stream found with this alias",
+      "alias_already_exists": "A camera with this alias already exists."
+    },
+    "step": {
+      "user": {
+        "description": "Enter the settings to connect to the camera.",
+        "data": {
+          "alias": "IPCamLive stream alias",
+          "name": "Name (alias by default)"
+        }
+      },
+      "confirm": {
+        "description": "[%key:common::config_flow::description::confirm_setup%]"
+      }
+    }
+  }
+}

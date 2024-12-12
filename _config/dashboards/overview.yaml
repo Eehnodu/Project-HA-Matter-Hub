@@ -1,0 +1,1207 @@
+views:
+  - title: 공장 현황
+    path: overview
+    type: panel
+    cards:
+      - type: picture-elements
+        elements:
+          - type: state-icon
+            entity: sensor.tia_fake_hub_line1_co2_1
+            title: line1-Co2-1
+            style:
+              left: 18%
+              top: 53%
+              '--mdc-icon-size': 50px
+            card_mod:
+              style: |
+                :host {
+                  --card-mod-icon-color: {% if states('sensor.tia_fake_hub_line1_co2_1') | int > 600 %}
+                    red
+                  {% elif states('sensor.tia_fake_hub_line1_co2_1') | int > 400 %}
+                    yellow
+                  {% else %}
+                    green
+                  {% endif %};
+                }
+          - type: state-icon
+            entity: sensor.tia_fake_hub_line1_co2_2
+            title: line1-Co2-2
+            style:
+              left: 22%
+              top: 53%
+              '--mdc-icon-size': 50px
+            card_mod:
+              style: |
+                :host {
+                  --card-mod-icon-color: {% if states('sensor.tia_fake_hub_line1_co2_2') | int > 600 %}
+                    red
+                  {% elif states('sensor.tia_fake_hub_line1_co2_2') | int > 400 %}
+                    yellow
+                  {% else %}
+                    green
+                  {% endif %};
+                }
+          - type: state-icon
+            entity: sensor.tia_fake_hub_line1_co2_3
+            title: line1-Co2-3
+            style:
+              left: 26%
+              top: 53%
+              '--mdc-icon-size': 50px
+            card_mod:
+              style: |
+                :host {
+                  --card-mod-icon-color: {% if states('sensor.tia_fake_hub_line1_co2_3') | int > 600 %}
+                    red
+                  {% elif states('sensor.tia_fake_hub_line1_co2_3') | int > 400 %}
+                    yellow
+                  {% else %}
+                    green
+                  {% endif %};
+                }
+          - type: state-icon
+            entity: sensor.tia_fake_hub_line1_co2_4
+            title: line1-Co2-4
+            style:
+              left: 30%
+              top: 53%
+              '--mdc-icon-size': 50px
+            card_mod:
+              style: |
+                :host {
+                  --card-mod-icon-color: {% if states('sensor.tia_fake_hub_line1_co2_4') | int > 600 %}
+                    red
+                  {% elif states('sensor.tia_fake_hub_line1_co2_4') | int > 400 %}
+                    yellow
+                  {% else %}
+                    green
+                  {% endif %};
+                }
+          - type: state-icon
+            entity: sensor.tia_fake_hub_line1_co2_5
+            title: line1-Co2-5
+            style:
+              left: 34%
+              top: 53%
+              '--mdc-icon-size': 50px
+            card_mod:
+              style: |
+                :host {
+                  --card-mod-icon-color: {% if states('sensor.tia_fake_hub_line1_co2_5') | int > 600 %}
+                    red
+                  {% elif states('sensor.tia_fake_hub_line1_co2_5') | int > 400 %}
+                    yellow
+                  {% else %}
+                    green
+                  {% endif %};
+                }
+          - type: state-icon
+            entity: sensor.tia_fake_hub_line1_co2_6
+            title: line1-Co2-6
+            style:
+              left: 38%
+              top: 53%
+              '--mdc-icon-size': 50px
+            card_mod:
+              style: |
+                :host {
+                  --card-mod-icon-color: {% if states('sensor.tia_fake_hub_line1_co2_6') | int > 600 %}
+                    red
+                  {% elif states('sensor.tia_fake_hub_line1_co2_6') | int > 400 %}
+                    yellow
+                  {% else %}
+                    green
+                  {% endif %};
+                }
+          - type: state-icon
+            entity: sensor.tia_fake_hub_line1_co2_7
+            title: line1-Co2-7
+            style:
+              left: 42%
+              top: 53%
+              '--mdc-icon-size': 50px
+            card_mod:
+              style: |
+                :host {
+                  --card-mod-icon-color: {% if states('sensor.tia_fake_hub_line1_co2_7') | int > 600 %}
+                    red
+                  {% elif states('sensor.tia_fake_hub_line1_co2_7') | int > 400 %}
+                    yellow
+                  {% else %}
+                    green
+                  {% endif %};
+                }
+          - type: state-icon
+            entity: sensor.tia_fake_hub_line1_co2_8
+            title: line1-Co2-8
+            style:
+              left: 46%
+              top: 53%
+              '--mdc-icon-size': 50px
+            card_mod:
+              style: |
+                :host {
+                  --card-mod-icon-color: {% if states('sensor.tia_fake_hub_line1_co2_8') | int > 600 %}
+                    red
+                  {% elif states('sensor.tia_fake_hub_line1_co2_8') | int > 400 %}
+                    yellow
+                  {% else %}
+                    green
+                  {% endif %};
+                }
+          - type: state-icon
+            entity: sensor.tia_fake_hub_line1_co2_9
+            title: line1-Co2-9
+            style:
+              left: 50%
+              top: 53%
+              '--mdc-icon-size': 50px
+            card_mod:
+              style: |
+                :host {
+                  --card-mod-icon-color: {% if states('sensor.tia_fake_hub_line1_co2_9') | int > 600 %}
+                    red
+                  {% elif states('sensor.tia_fake_hub_line1_co2_9') | int > 400 %}
+                    yellow
+                  {% else %}
+                    green
+                  {% endif %};
+                }
+          - type: state-icon
+            entity: sensor.tia_fake_hub_line1_co2_10
+            title: line1-Co2-10
+            style:
+              left: 54%
+              top: 53%
+              '--mdc-icon-size': 50px
+            card_mod:
+              style: |
+                :host {
+                  --card-mod-icon-color: {% if states('sensor.tia_fake_hub_line1_co2_10') | int > 600 %}
+                    red
+                  {% elif states('sensor.tia_fake_hub_line1_co2_10') | int > 400 %}
+                    yellow
+                  {% else %}
+                    green
+                  {% endif %};
+                }
+          - type: state-icon
+            entity: sensor.tia_fake_hub_line1_co2_11
+            title: line1-Co2-11
+            style:
+              left: 58%
+              top: 53%
+              '--mdc-icon-size': 50px
+            card_mod:
+              style: |
+                :host {
+                  --card-mod-icon-color: {% if states('sensor.tia_fake_hub_line1_co2_11') | int > 600 %}
+                    red
+                  {% elif states('sensor.tia_fake_hub_line1_co2_11') | int > 400 %}
+                    yellow
+                  {% else %}
+                    green
+                  {% endif %};
+                }
+          - type: state-icon
+            entity: sensor.tia_fake_hub_line1_co2_12
+            title: line1-Co2-12
+            style:
+              left: 62%
+              top: 53%
+              '--mdc-icon-size': 50px
+            card_mod:
+              style: |
+                :host {
+                  --card-mod-icon-color: {% if states('sensor.tia_fake_hub_line1_co2_12') | int > 600 %}
+                    red
+                  {% elif states('sensor.tia_fake_hub_line1_co2_12') | int > 400 %}
+                    yellow
+                  {% else %}
+                    green
+                  {% endif %};
+                }
+          - type: state-icon
+            entity: sensor.tia_fake_hub_line1_co_1
+            style:
+              left: 20%
+              top: 45%
+              '--mdc-icon-size': 50px
+            card_mod:
+              style: |
+                :host {
+                  --card-mod-icon-color: {% if states('sensor.tia_fake_hub_line1_co_1') | int > 25 %}
+                    red
+                  {% elif states('sensor.tia_fake_hub_line1_co_1') | int > 20 %}
+                    yellow
+                  {% else %}
+                    green
+                  {% endif %};
+                }
+            title: line1-Co-1
+          - type: state-icon
+            entity: sensor.tia_fake_hub_line1_co_2
+            style:
+              left: 24%
+              top: 45%
+              '--mdc-icon-size': 50px
+            card_mod:
+              style: |
+                :host {
+                  --card-mod-icon-color: {% if states('sensor.tia_fake_hub_line1_co_2') | int > 25 %}
+                    red
+                  {% elif states('sensor.tia_fake_hub_line1_co_2') | int > 20 %}
+                    yellow
+                  {% else %}
+                    green
+                  {% endif %};
+                }
+            title: line1-Co-2
+          - type: state-icon
+            entity: sensor.tia_fake_hub_line1_co_3
+            style:
+              left: 28%
+              top: 45%
+              '--mdc-icon-size': 50px
+            card_mod:
+              style: |
+                :host {
+                  --card-mod-icon-color: {% if states('sensor.tia_fake_hub_line1_co_3') | int > 25 %}
+                    red
+                  {% elif states('sensor.tia_fake_hub_line1_co_3') | int > 20 %}
+                    yellow
+                  {% else %}
+                    green
+                  {% endif %};
+                }
+            title: line1-Co-3
+          - type: state-icon
+            entity: sensor.tia_fake_hub_line1_co_4
+            style:
+              left: 32%
+              top: 45%
+              '--mdc-icon-size': 50px
+            card_mod:
+              style: |
+                :host {
+                  --card-mod-icon-color: {% if states('sensor.tia_fake_hub_line1_co_4') | int > 25 %}
+                    red
+                  {% elif states('sensor.tia_fake_hub_line1_co_4') | int > 20 %}
+                    yellow
+                  {% else %}
+                    green
+                  {% endif %};
+                }
+            title: line1-Co-4
+          - type: state-icon
+            entity: sensor.tia_fake_hub_line1_co_5
+            style:
+              left: 36%
+              top: 45%
+              '--mdc-icon-size': 50px
+            card_mod:
+              style: |
+                :host {
+                  --card-mod-icon-color: {% if states('sensor.tia_fake_hub_line1_co_5') | int > 25 %}
+                    red
+                  {% elif states('sensor.tia_fake_hub_line1_co_5') | int > 20 %}
+                    yellow
+                  {% else %}
+                    green
+                  {% endif %};
+                }
+            title: line1-Co-5
+          - type: state-icon
+            entity: sensor.tia_fake_hub_line1_co_6
+            style:
+              left: 40%
+              top: 45%
+              '--mdc-icon-size': 50px
+            card_mod:
+              style: |
+                :host {
+                  --card-mod-icon-color: {% if states('sensor.tia_fake_hub_line1_co_6') | int > 25 %}
+                    red
+                  {% elif states('sensor.tia_fake_hub_line1_co_6') | int > 20 %}
+                    yellow
+                  {% else %}
+                    green
+                  {% endif %};
+                }
+            title: line1-Co-6
+          - type: state-icon
+            entity: sensor.tia_fake_hub_line1_co_7
+            style:
+              left: 44%
+              top: 45%
+              '--mdc-icon-size': 50px
+            card_mod:
+              style: |
+                :host {
+                  --card-mod-icon-color: {% if states('sensor.tia_fake_hub_line1_co_7') | int > 25 %}
+                    red
+                  {% elif states('sensor.tia_fake_hub_line1_co_7') | int > 20 %}
+                    yellow
+                  {% else %}
+                    green
+                  {% endif %};
+                }
+            title: line1-Co-7
+          - type: state-icon
+            entity: sensor.tia_fake_hub_line1_co_8
+            style:
+              left: 48%
+              top: 45%
+              '--mdc-icon-size': 50px
+            card_mod:
+              style: |
+                :host {
+                  --card-mod-icon-color: {% if states('sensor.tia_fake_hub_line1_co_8') | int > 25 %}
+                    red
+                  {% elif states('sensor.tia_fake_hub_line1_co_8') | int > 20 %}
+                    yellow
+                  {% else %}
+                    green
+                  {% endif %};
+                }
+            title: line1-Co-8
+          - type: state-icon
+            entity: sensor.tia_fake_hub_line1_co_9
+            style:
+              left: 52%
+              top: 45%
+              '--mdc-icon-size': 50px
+            card_mod:
+              style: |
+                :host {
+                  --card-mod-icon-color: {% if states('sensor.tia_fake_hub_line1_co_9') | int > 25 %}
+                    red
+                  {% elif states('sensor.tia_fake_hub_line1_co_9') | int > 20 %}
+                    yellow
+                  {% else %}
+                    green
+                  {% endif %};
+                }
+            title: line1-Co-9
+          - type: state-icon
+            entity: sensor.tia_fake_hub_line1_co_10
+            style:
+              left: 56%
+              top: 45%
+              '--mdc-icon-size': 50px
+            card_mod:
+              style: |
+                :host {
+                  --card-mod-icon-color: {% if states('sensor.tia_fake_hub_line1_co_10') | int > 25 %}
+                    red
+                  {% elif states('sensor.tia_fake_hub_line1_co_10') | int > 20 %}
+                    yellow
+                  {% else %}
+                    green
+                  {% endif %};
+                }
+            title: line1-Co-10
+          - type: state-icon
+            entity: sensor.tia_fake_hub_line1_co_11
+            style:
+              left: 60%
+              top: 45%
+              '--mdc-icon-size': 50px
+            card_mod:
+              style: |
+                :host {
+                  --card-mod-icon-color: {% if states('sensor.tia_fake_hub_line1_co_11') | int > 25 %}
+                    red
+                  {% elif states('sensor.tia_fake_hub_line1_co_11') | int > 20 %}
+                    yellow
+                  {% else %}
+                    green
+                  {% endif %};
+                }
+            title: line1-Co-11
+          - type: state-icon
+            entity: sensor.tia_fake_hub_line1_co_12
+            title: line1-Co-12
+            style:
+              left: 64%
+              top: 45%
+              '--mdc-icon-size': 50px
+            card_mod:
+              style: |
+                :host {
+                  --card-mod-icon-color: {% if states('sensor.tia_fake_hub_line1_co_12') | int > 25 %}
+                    red
+                  {% elif states('sensor.tia_fake_hub_line1_co_12') | int > 20 %}
+                    yellow
+                  {% else %}
+                    green
+                  {% endif %};
+                }
+          - type: state-icon
+            entity: fan.fan1
+            title: line1-fan-1
+            style:
+              left: 21%
+              top: 30%
+              '--mdc-icon-size': 50px
+          - type: state-icon
+            entity: fan.fan2
+            title: line1-fan-2
+            style:
+              left: 29%
+              top: 30%
+              '--mdc-icon-size': 50px
+          - type: state-icon
+            entity: fan.fan3
+            title: line1-fan-3
+            style:
+              left: 37%
+              top: 30%
+              '--mdc-icon-size': 50px
+          - type: state-icon
+            entity: fan.fan4
+            title: line1-fan-4
+            style:
+              left: 45%
+              top: 30%
+              '--mdc-icon-size': 50px
+          - type: state-icon
+            entity: fan.fan5
+            title: line1-fan-5
+            style:
+              left: 53%
+              top: 30%
+              '--mdc-icon-size': 50px
+          - type: state-icon
+            entity: fan.fan6
+            title: line1-fan-6
+            style:
+              left: 61%
+              top: 30%
+              '--mdc-icon-size': 50px
+          - type: state-icon
+            entity: light.light1
+            title: line1-light-1
+            style:
+              left: 18%
+              top: 20%
+              '--mdc-icon-size': 50px
+            card_mod:
+              style: |
+                :host {
+                  --card-mod-icon-color: {% if is_state('light.light1', 'on') %} red {% else %} green {% endif %};
+                }
+          - type: state-icon
+            entity: light.light2
+            title: line1-light-2
+            style:
+              left: 26%
+              top: 20%
+              '--mdc-icon-size': 50px
+            card_mod:
+              style: |
+                :host {
+                  --card-mod-icon-color: {% if is_state('light.light2', 'on') %} red {% else %} green {% endif %};
+                }
+          - type: state-icon
+            entity: light.light3
+            title: line1-light-3
+            style:
+              left: 34%
+              top: 20%
+              '--mdc-icon-size': 50px
+            card_mod:
+              style: |
+                :host {
+                  --card-mod-icon-color: {% if is_state('light.light3', 'on') %} red {% else %} green {% endif %};
+                }
+          - type: state-icon
+            entity: light.light4
+            title: line1-light-4
+            style:
+              left: 42%
+              top: 20%
+              '--mdc-icon-size': 50px
+            card_mod:
+              style: |
+                :host {
+                  --card-mod-icon-color: {% if is_state('light.light4', 'on') %} red {% else %} green {% endif %};
+                }
+          - type: state-icon
+            entity: light.light5
+            title: line1-light-5
+            style:
+              left: 50%
+              top: 20%
+              '--mdc-icon-size': 50px
+            card_mod:
+              style: |
+                :host {
+                  --card-mod-icon-color: {% if is_state('light.light5', 'on') %} red {% else %} green {% endif %};
+                }
+          - type: state-icon
+            entity: light.light6
+            title: line1-light-6
+            style:
+              left: 58%
+              top: 20%
+              '--mdc-icon-size': 50px
+            card_mod:
+              style: |
+                :host {
+                  --card-mod-icon-color: {% if is_state('light.light6', 'on') %} red {% else %} green {% endif %};
+                }
+          - type: state-icon
+            entity: sensor.tia_fake_hub_line2_co2_1
+            title: line2-Co2-1
+            style:
+              left: 19%
+              top: 89%
+              '--mdc-icon-size': 50px
+            card_mod:
+              style: |
+                :host {
+                  --card-mod-icon-color: {% if states('sensor.tia_fake_hub_line2_co2_1') | int > 600 %}
+                    red
+                  {% elif states('sensor.tia_fake_hub_line2_co2_1') | int > 40 %}
+                    yellow
+                  {% else %}
+                    green
+                  {% endif %};
+                }
+          - type: state-icon
+            entity: sensor.tia_fake_hub_line2_co2_2
+            title: line2-Co2-2
+            style:
+              left: 24%
+              top: 89%
+              '--mdc-icon-size': 50px
+            card_mod:
+              style: |
+                :host {
+                  --card-mod-icon-color: {% if states('sensor.tia_fake_hub_line2_co2_2') | int > 600 %}
+                    red
+                  {% elif states('sensor.tia_fake_hub_line2_co2_2') | int > 40 %}
+                    yellow
+                  {% else %}
+                    green
+                  {% endif %};
+                }
+          - type: state-icon
+            entity: sensor.tia_fake_hub_line2_co2_3
+            title: line2-Co2-3
+            style:
+              left: 29%
+              top: 89%
+              '--mdc-icon-size': 50px
+            card_mod:
+              style: |
+                :host {
+                  --card-mod-icon-color: {% if states('sensor.tia_fake_hub_line2_co2_3') | int > 600 %}
+                    red
+                  {% elif states('sensor.tia_fake_hub_line2_co2_3') | int > 40 %}
+                    yellow
+                  {% else %}
+                    green
+                  {% endif %};
+                }
+          - type: state-icon
+            entity: sensor.tia_fake_hub_line2_co2_4
+            title: line2-Co2-4
+            style:
+              left: 34%
+              top: 89%
+              '--mdc-icon-size': 50px
+            card_mod:
+              style: |
+                :host {
+                  --card-mod-icon-color: {% if states('sensor.tia_fake_hub_line2_co2_4') | int > 600 %}
+                    red
+                  {% elif states('sensor.tia_fake_hub_line2_co2_4') | int > 40 %}
+                    yellow
+                  {% else %}
+                    green
+                  {% endif %};
+                }
+          - type: state-icon
+            entity: sensor.tia_fake_hub_line2_co2_5
+            title: line2-Co2-5
+            style:
+              left: 49%
+              top: 89%
+              '--mdc-icon-size': 50px
+            card_mod:
+              style: |
+                :host {
+                  --card-mod-icon-color: {% if states('sensor.tia_fake_hub_line2_co2_5') | int > 600 %}
+                    red
+                  {% elif states('sensor.tia_fake_hub_line2_co2_5') | int > 40 %}
+                    yellow
+                  {% else %}
+                    green
+                  {% endif %};
+                }
+          - type: state-icon
+            entity: sensor.tia_fake_hub_line2_co2_6
+            title: line2-Co2-6
+            style:
+              left: 54%
+              top: 89%
+              '--mdc-icon-size': 50px
+            card_mod:
+              style: |
+                :host {
+                  --card-mod-icon-color: {% if states('sensor.tia_fake_hub_line2_co2_6') | int > 600 %}
+                    red
+                  {% elif states('sensor.tia_fake_hub_line2_co2_6') | int > 40 %}
+                    yellow
+                  {% else %}
+                    green
+                  {% endif %};
+                }
+          - type: state-icon
+            entity: sensor.tia_fake_hub_line2_co2_7
+            title: line2-Co2-7
+            style:
+              left: 59%
+              top: 89%
+              '--mdc-icon-size': 50px
+            card_mod:
+              style: |
+                :host {
+                  --card-mod-icon-color: {% if states('sensor.tia_fake_hub_line2_co2_7') | int > 600 %}
+                    red
+                  {% elif states('sensor.tia_fake_hub_line2_co2_7') | int > 40 %}
+                    yellow
+                  {% else %}
+                    green
+                  {% endif %};
+                }
+          - type: state-icon
+            entity: sensor.tia_fake_hub_line2_co_1
+            title: line2-Co-1
+            style:
+              left: 22%
+              top: 83%
+              '--mdc-icon-size': 50px
+            card_mod:
+              style: |
+                :host {
+                  --card-mod-icon-color: {% if states('sensor.tia_fake_hub_line2_co_1') | int > 25 %}
+                    red
+                  {% elif states('sensor.tia_fake_hub_line2_co_1') | int > 20 %}
+                    yellow
+                  {% else %}
+                    green
+                  {% endif %};
+                }
+          - type: state-icon
+            entity: sensor.tia_fake_hub_line2_co_2
+            title: line2-Co-2
+            style:
+              left: 27%
+              top: 83%
+              '--mdc-icon-size': 50px
+            card_mod:
+              style: |
+                :host {
+                  --card-mod-icon-color: {% if states('sensor.tia_fake_hub_line2_co_2') | int > 25 %}
+                    red
+                  {% elif states('sensor.tia_fake_hub_line2_co_2') | int > 20 %}
+                    yellow
+                  {% else %}
+                    green
+                  {% endif %};
+                }
+          - type: state-icon
+            entity: sensor.tia_fake_hub_line2_co_3
+            title: line2-Co-3
+            style:
+              left: 32%
+              top: 83%
+              '--mdc-icon-size': 50px
+            card_mod:
+              style: |
+                :host {
+                  --card-mod-icon-color: {% if states('sensor.tia_fake_hub_line2_co_3') | int > 25 %}
+                    red
+                  {% elif states('sensor.tia_fake_hub_line2_co_3') | int > 20 %}
+                    yellow
+                  {% else %}
+                    green
+                  {% endif %};
+                }
+          - type: state-icon
+            entity: sensor.tia_fake_hub_line2_co_4
+            title: line2-Co-4
+            style:
+              left: 47%
+              top: 83%
+              '--mdc-icon-size': 50px
+            card_mod:
+              style: |
+                :host {
+                  --card-mod-icon-color: {% if states('sensor.tia_fake_hub_line2_co_4') | int > 25 %}
+                    red
+                  {% elif states('sensor.tia_fake_hub_line2_co_4') | int > 20 %}
+                    yellow
+                  {% else %}
+                    green
+                  {% endif %};
+                }
+          - type: state-icon
+            entity: sensor.tia_fake_hub_line2_co_5
+            title: line2-Co-5
+            style:
+              left: 52%
+              top: 83%
+              '--mdc-icon-size': 50px
+            card_mod:
+              style: |
+                :host {
+                  --card-mod-icon-color: {% if states('sensor.tia_fake_hub_line2_co_5') | int > 25 %}
+                    red
+                  {% elif states('sensor.tia_fake_hub_line2_co_5') | int > 20 %}
+                    yellow
+                  {% else %}
+                    green
+                  {% endif %};
+                }
+          - type: state-icon
+            entity: sensor.tia_fake_hub_line2_co_6
+            title: line2-Co-6
+            style:
+              left: 57%
+              top: 83%
+              '--mdc-icon-size': 50px
+            card_mod:
+              style: |
+                :host {
+                  --card-mod-icon-color: {% if states('sensor.tia_fake_hub_line2_co_6') | int > 25 %}
+                    red
+                  {% elif states('sensor.tia_fake_hub_line2_co_6') | int > 20 %}
+                    yellow
+                  {% else %}
+                    green
+                  {% endif %};
+                }
+          - type: state-icon
+            entity: sensor.tia_fake_hub_line2_co_7
+            title: line2-Co-7
+            style:
+              left: 62%
+              top: 83%
+              '--mdc-icon-size': 50px
+            card_mod:
+              style: |
+                :host {
+                  --card-mod-icon-color: {% if states('sensor.tia_fake_hub_line2_co_7') | int > 25 %}
+                    red
+                  {% elif states('sensor.tia_fake_hub_line2_co_7') | int > 20 %}
+                    yellow
+                  {% else %}
+                    green
+                  {% endif %};
+                }
+          - type: state-icon
+            entity: fan.fan7
+            style:
+              left: 15%
+              top: 86%
+              '--mdc-icon-size': 50px
+            title: line2-fan-1
+          - type: state-icon
+            entity: fan.fan8
+            title: line2-fan-2
+            style:
+              left: 43%
+              top: 86%
+              '--mdc-icon-size': 50px
+          - type: state-icon
+            entity: light.light7
+            title: line2-light-1
+            style:
+              left: 38%
+              top: 86%
+              '--mdc-icon-size': 50px
+            card_mod:
+              style: |
+                :host {
+                  --card-mod-icon-color: {% if is_state('light.light7', 'on') %} red {% else %} green {% endif %};
+                }
+          - type: state-icon
+            entity: light.light8
+            title: line2-light-2
+            style:
+              left: 66%
+              top: 86%
+              '--mdc-icon-size': 50px
+            card_mod:
+              style: |
+                :host {
+                  --card-mod-icon-color: {% if is_state('light.light8', 'on') %} red {% else %} green {% endif %};
+                }
+          - type: state-icon
+            entity: camera.demo_camera
+            style:
+              left: 8%
+              top: 42%
+              '--mdc-icon-size': 50px
+            card_mod:
+              style: |
+                :host {
+                  --card-mod-icon-color: #FF9800
+                }
+            tap_action:
+              action: navigate
+              navigation_path: /lovelace-security
+            title: security-1
+            icon: mdi:cctv
+          - type: state-icon
+            entity: camera.demo_camera
+            style:
+              left: 8%
+              top: 62%
+              '--mdc-icon-size': 50px
+            card_mod:
+              style: |
+                :host {
+                  --card-mod-icon-color: #FF9800
+                }
+            tap_action:
+              action: navigate
+              navigation_path: /lovelace-security
+            title: security-2
+            icon: mdi:cctv
+          - type: state-icon
+            entity: camera.demo_camera
+            style:
+              left: 8%
+              top: 82%
+              '--mdc-icon-size': 50px
+            card_mod:
+              style: |
+                :host {
+                  --card-mod-icon-color: #FF9800
+                }
+            tap_action:
+              action: navigate
+              navigation_path: /lovelace-security
+            title: security-3
+            icon: mdi:cctv
+          - type: state-icon
+            entity: camera.demo_camera
+            tap_action:
+              action: navigate
+              navigation_path: /lovelace-security
+            title: security-4
+            icon: mdi:cctv
+            style:
+              left: 22%
+              top: 6%
+              '--mdc-icon-size': 50px
+            card_mod:
+              style: |
+                :host {
+                  --card-mod-icon-color: #FF9800
+                }
+          - type: state-icon
+            entity: camera.demo_camera
+            tap_action:
+              action: navigate
+              navigation_path: /lovelace-security
+            title: security-5
+            icon: mdi:cctv
+            style:
+              left: 25%
+              top: 95%
+              '--mdc-icon-size': 50px
+            card_mod:
+              style: |
+                :host {
+                  --card-mod-icon-color: #FF9800
+                }
+          - type: state-icon
+            entity: camera.demo_camera
+            tap_action:
+              action: navigate
+              navigation_path: /lovelace-security
+            title: security-6
+            icon: mdi:cctv
+            style:
+              left: 76%
+              top: 8%
+              '--mdc-icon-size': 50px
+            card_mod:
+              style: |
+                :host {
+                  --card-mod-icon-color: #FF9800
+                }
+          - type: state-icon
+            entity: camera.demo_camera
+            tap_action:
+              action: navigate
+              navigation_path: /lovelace-security
+            title: security-7
+            icon: mdi:cctv
+            style:
+              left: 78%
+              top: 93%
+              '--mdc-icon-size': 50px
+            card_mod:
+              style: |
+                :host {
+                  --card-mod-icon-color: #FF9800
+                }
+          - type: state-icon
+            entity: camera.demo_camera
+            tap_action:
+              action: navigate
+              navigation_path: /lovelace-security
+            title: security-8
+            icon: mdi:cctv
+            style:
+              left: 97%
+              top: 58%
+              '--mdc-icon-size': 50px
+            card_mod:
+              style: |
+                :host {
+                  --card-mod-icon-color: #FF9800
+                }
+          - type: state-icon
+            entity: switch.celling_sprinkler2
+            title: line1-celling_springkler2
+            style:
+              left: 68%
+              top: 38%
+              '--mdc-icon-size': 50px
+            card_mod:
+              style: |
+                :host {
+                  --card-mod-icon-color: {% if is_state('switch.celling_sprinkler2', 'on') %} #ffd000 {% else %} #6c6f85 {% endif %};
+                }
+          - type: state-icon
+            entity: switch.celling_sprinkler1
+            title: line1-celling_springkler1
+            style:
+              left: 18%
+              top: 38%
+              '--mdc-icon-size': 50px
+            card_mod:
+              style: |
+                :host {
+                  --card-mod-icon-color: {% if is_state('switch.celling_sprinkler1', 'on') %} #ffd000 {% else %} #6c6f85 {% endif %};
+                }
+          - type: state-icon
+            entity: switch.side_sprinkler1
+            title: line2-side_springkler1
+            style:
+              left: 28%
+              top: 76%
+              '--mdc-icon-size': 50px
+            card_mod:
+              style: |
+                :host {
+                  --card-mod-icon-color: {% if is_state('switch.side_sprinkler1', 'on') %} #d98b45 {% else %} #6c6f85 {% endif %};
+                }
+          - type: state-icon
+            entity: switch.side_sprinkler2
+            title: line2-side_springkler2
+            style:
+              left: 54%
+              top: 76%
+              '--mdc-icon-size': 50px
+            card_mod:
+              style: |
+                :host {
+                  --card-mod-icon-color: {% if is_state('switch.side_sprinkler2', 'on') %} #d98b45 {% else %} #6c6f85 {% endif %};
+                }
+          - type: state-icon
+            entity: switch.sprinkler1
+            title: line1-springkler1
+            style:
+              left: 38%
+              top: 38%
+              '--mdc-icon-size': 50px
+            card_mod:
+              style: |
+                :host {
+                  --card-mod-icon-color: {% if is_state('switch.sprinkler1', 'on') %} #d9365e {% else %} #6c6f85 {% endif %};
+                }
+          - type: state-icon
+            entity: switch.sprinkler2
+            title: line1-springkler2
+            style:
+              left: 48%
+              top: 38%
+              '--mdc-icon-size': 50px
+            card_mod:
+              style: |
+                :host {
+                  --card-mod-icon-color: {% if is_state('switch.sprinkler2', 'on') %} #d9365e {% else %} #6c6f85 {% endif %};
+                }
+          - type: state-icon
+            entity: lock.front_lock1
+            title: door-1
+            style:
+              left: 3%
+              top: 42%
+              '--mdc-icon-size': 50px
+            card_mod:
+              style: |
+                :host {
+                  --card-mod-icon-color: {% if is_state('lock.front_lock1', 'locked') %} green {% else %} red {% endif %};
+                }
+          - type: state-icon
+            entity: lock.front_lock2
+            title: door-2
+            style:
+              left: 3%
+              top: 62%
+              '--mdc-icon-size': 50px
+            card_mod:
+              style: |
+                :host {
+                  --card-mod-icon-color: {% if is_state('lock.front_lock2', 'locked') %} green {% else %} red {% endif %};
+                }
+          - type: state-icon
+            entity: lock.front_lock3
+            title: door-3
+            style:
+              left: 3%
+              top: 82%
+              '--mdc-icon-size': 50px
+            card_mod:
+              style: |
+                :host {
+                  --card-mod-icon-color: {% if is_state('lock.front_lock3', 'locked') %} green {% else %} red {% endif %};
+                }
+          - type: state-icon
+            entity: lock.right_lock1
+            title: door-4
+            style:
+              left: 16%
+              top: 6%
+              '--mdc-icon-size': 50px
+            card_mod:
+              style: |
+                :host {
+                  --card-mod-icon-color: {% if is_state('lock.right_lock1', 'locked') %} green {% else %} red {% endif %};
+                }
+          - type: state-icon
+            entity: lock.left_lock1
+            title: door-5
+            style:
+              left: 20%
+              top: 95%
+              '--mdc-icon-size': 50px
+            card_mod:
+              style: |
+                :host {
+                  --card-mod-icon-color: {% if is_state('lock.left_lock1', 'locked') %} green {% else %} red {% endif %};
+                }
+          - type: state-icon
+            entity: lock.right_lock2
+            title: door-6
+            style:
+              left: 70%
+              top: 8%
+              '--mdc-icon-size': 50px
+            card_mod:
+              style: |
+                :host {
+                  --card-mod-icon-color: {% if is_state('lock.right_lock2', 'locked') %} green {% else %} red {% endif %};
+                }
+          - type: state-icon
+            entity: lock.left_lock2
+            title: door-7
+            style:
+              left: 72%
+              top: 93%
+              '--mdc-icon-size': 50px
+            card_mod:
+              style: |
+                :host {
+                  --card-mod-icon-color: {% if is_state('lock.left_lock2', 'locked') %} green {% else %} red {% endif %};
+                }
+          - type: state-icon
+            entity: lock.back_lock1
+            title: door-8
+            style:
+              left: 98%
+              top: 66%
+              '--mdc-icon-size': 50px
+            card_mod:
+              style: |
+                :host {
+                  --card-mod-icon-color: {% if is_state('lock.back_lock1', 'locked') %} green {% else %} red {% endif %};
+                }
+          - type: state-icon
+            entity: sensor.tia_fake_hub_temperature1
+            style:
+              left: 28%
+              top: 38%
+              '--mdc-icon-size': 50px
+            card_mod:
+              style: |
+                :host {
+                  --card-mod-icon-color: red;
+                }
+          - type: state-icon
+            entity: sensor.tia_fake_hub_temperature2
+            style:
+              left: 58%
+              top: 38%
+              '--mdc-icon-size': 50px
+            card_mod:
+              style: |
+                :host {
+                  --card-mod-icon-color: red;
+                }
+          - type: state-icon
+            entity: sensor.tia_fake_hub_temperature3
+            style:
+              left: 40%
+              top: 76%
+              '--mdc-icon-size': 50px
+            card_mod:
+              style: |
+                :host {
+                  --card-mod-icon-color: red;
+                }
+          - type: state-icon
+            entity: camera.demo_camera
+            icon: mdi:video
+            title: inspect-camera1
+            tap_action:
+              action: navigate
+              navigation_path: /lovelace-status/inspect
+            style:
+              left: 80%
+              top: 60%
+              '--mdc-icon-size': 50px
+            card_mod:
+              style: |
+                :host {
+                  --card-mod-icon-color: #4CAF50;
+                }
+          - type: state-icon
+            entity: camera.demo_camera
+            icon: mdi:video
+            title: inspect-camera2
+            tap_action:
+              action: navigate
+              navigation_path: /lovelace-status/inspect
+            style:
+              left: 80%
+              top: 75%
+              '--mdc-icon-size': 50px
+            card_mod:
+              style: |
+                :host {
+                  --card-mod-icon-color: #4CAF50;
+                }
+        dark_mode_image: /local/factory.png
+        image: /local/factory.png
+    subview: true

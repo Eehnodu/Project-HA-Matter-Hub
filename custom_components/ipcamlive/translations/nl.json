@@ -1,0 +1,27 @@
+{
+  "state": {
+    "_": {
+      "idle": "Inactief",
+      "streaming": "Streamen"
+    }
+  },
+  "config": {
+    "error": {
+      "unknown": "Onverwachte fout",
+      "alias_not_found": "Geen stream gevonden met deze alias",
+      "alias_already_exists": "Een camera met deze alias bestaat al."
+    },
+    "step": {
+      "user": {
+        "description": "Voer de instellingen in om verbinding te maken met de stream.",
+        "data": {
+          "alias": "IPCamLive alias",
+          "name": "Naam (laat leeg om alias te gebruiken)"
+        }
+      },
+      "confirm": {
+        "description": "Wilt u beginnen met instellen?"
+      }
+    }
+  }
+}
