@@ -145,7 +145,7 @@ async def async_setup_platform(
             17.96,
             SensorDeviceClass.ENERGY,
             SensorStateClass.MEASUREMENT,
-            UnitOfEnergy.KILO_WATT_HOUR,
+            UnitOfPower.KILO_WATT,
             None,
         ),
         FakeSensor(
