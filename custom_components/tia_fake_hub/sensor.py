@@ -48,38 +48,6 @@ async def async_setup_platform(
     # We only want this platform to be set up via discovery.
     if discovery_info is None:
         return
-    # async_add_entities(
-    #     [
-    #         ExampleSensor(),
-    #         FakeSensor(
-    #             "tia_sensor_outside_1",
-    #             "Outside Temperature",
-    #             12.3,
-    #             SensorDeviceClass.TEMPERATURE,
-    #             SensorStateClass.MEASUREMENT,
-    #             UnitOfTemperature.CELSIUS,
-    #             12,
-    #         ),
-    #         FakeSensor(
-    #             "co2sensor_1",
-    #             "Carbon dioxide",
-    #             54,
-    #             SensorDeviceClass.CO2,
-    #             SensorStateClass.MEASUREMENT,
-    #             CONCENTRATION_PARTS_PER_MILLION,
-    #             14,
-    #         ),
-    #         FakeSensor(
-    #             "co2sensor 2",
-    #             "Carbon dioxide",
-    #             31,
-    #             SensorDeviceClass.CO2,
-    #             SensorStateClass.MEASUREMENT,
-    #             CONCENTRATION_PARTS_PER_MILLION,
-    #             13,
-    #         ),
-    #     ],
-    # )
 
     temperature_sensors = [
         FakeSensor(
@@ -314,6 +282,75 @@ async def async_setup_platform(
         ),
     ]
 
+    fake_aux_sensors = [
+        FakeSensor(
+            "fake_aux_1",
+            "Fake Aux 1",
+            31.84,
+            SensorDeviceClass.ENERGY,
+            SensorStateClass.MEASUREMENT,
+            UnitOfPower.KILO_WATT,
+            None,
+        ),
+        FakeSensor(
+            "fake_aux_2",
+            "Fake Aux 2",
+            23.61,
+            SensorDeviceClass.ENERGY,
+            SensorStateClass.MEASUREMENT,
+            UnitOfPower.KILO_WATT,
+            None,
+        ),
+        FakeSensor(
+            "fake_aux_1_extra",
+            "Fake Aux 1 Extra",
+            13.58,
+            SensorDeviceClass.ENERGY,
+            SensorStateClass.MEASUREMENT,
+            UnitOfPower.KILO_WATT,
+            None,
+        ),
+        FakeSensor(
+            "fake_aux_2_extra",
+            "Fake Aux 2 Extra",
+            6.31,
+            SensorDeviceClass.ENERGY,
+            SensorStateClass.MEASUREMENT,
+            UnitOfPower.KILO_WATT,
+            None,
+        ),
+        FakeSensor(
+            "fake_sunsynk_aux_power",
+            "Fake Aux Power",
+            74.92,
+            SensorDeviceClass.ENERGY,
+            SensorStateClass.MEASUREMENT,
+            UnitOfPower.KILO_WATT,
+            None,
+        ),
+    ]
+
+    fake_load_sensors = [
+        FakeSensor(
+            "fake_load1_power",
+            "Fake Load1 Pover",
+            52.71,
+            SensorDeviceClass.ENERGY,
+            SensorStateClass.MEASUREMENT,
+            UnitOfPower.KILO_WATT,
+            None,
+        ),
+        FakeSensor(
+            "fake_load2_power",
+            "Fake Load2 Pover",
+            25.83,
+            SensorDeviceClass.ENERGY,
+            SensorStateClass.MEASUREMENT,
+            UnitOfPower.KILO_WATT,
+            None,
+        ),
+    ]
+
     fake_energy_sensor = [
         FakeSumSensor(
             "fake_total_solar_sensor1",
@@ -349,60 +386,6 @@ async def async_setup_platform(
             SensorDeviceClass.GAS,
             SensorStateClass.TOTAL,
             UnitOfVolume.CUBIC_FEET,
-            None,
-        ),
-        FakeSumSensor(
-            "fake_aux_1",
-            "Fake Aux 1",
-            100.0,
-            SensorDeviceClass.ENERGY,
-            SensorStateClass.TOTAL,
-            UnitOfPower.WATT,
-            None,
-        ),
-        FakeSumSensor(
-            "fake_aux_2",
-            "Fake Aux 2",
-            120.0,
-            SensorDeviceClass.ENERGY,
-            SensorStateClass.MEASUREMENT,
-            UnitOfPower.WATT,
-            None,
-        ),
-        FakeSumSensor(
-            "fake_aux_1_extra",
-            "Fake Aux 1 Extra",
-            50.0,
-            SensorDeviceClass.ENERGY,
-            SensorStateClass.TOTAL,
-            UnitOfPower.WATT,
-            None,
-        ),
-        FakeSumSensor(
-            "fake_aux_2_extra",
-            "Fake Aux 2 Extra",
-            30.0,
-            SensorDeviceClass.ENERGY,
-            SensorStateClass.TOTAL,
-            UnitOfPower.WATT,
-            None,
-        ),
-        FakeSumSensor(
-            "fake_sunsynk_aux_power",
-            "Fake Aux Power",
-            4000.0,
-            SensorDeviceClass.ENERGY,
-            SensorStateClass.TOTAL,
-            UnitOfPower.WATT,
-            None,
-        ),
-        FakeSumSensor(
-            "fake_sunsynk_day_aux_energy",
-            "Fake Day Aux Energy",
-            8.0,
-            SensorDeviceClass.ENERGY,
-            SensorStateClass.TOTAL,
-            UnitOfPower.KILO_WATT,
             None,
         ),
         FakeSumSensor(
@@ -505,17 +488,8 @@ async def async_setup_platform(
             None,
         ),
         FakeSumSensor(
-            "fake_load2_power",
-            "Fake Load2 Pover",
-            5000.0,
-            SensorDeviceClass.ENERGY,
-            SensorStateClass.MEASUREMENT,
-            UnitOfPower.WATT,
-            None,
-        ),
-        FakeSumSensor(
             "fake_day_grid_export",
-            "Fake Load2 Pover",
+            "Fake Day Grid Export",
             40.00,
             SensorDeviceClass.ENERGY,
             SensorStateClass.MEASUREMENT,
@@ -524,7 +498,7 @@ async def async_setup_platform(
         ),
         FakeSumSensor(
             "fake_day_grid_import",
-            "Fake Load2 Pover",
+            "Fake Day Grid Import",
             26.00,
             SensorDeviceClass.ENERGY,
             SensorStateClass.MEASUREMENT,
@@ -559,6 +533,15 @@ async def async_setup_platform(
             PERCENTAGE,
             None,
         ),
+        FakeSumSensor(
+            "fake_sunsynk_day_aux_energy",
+            "Fake Day Aux Energy",
+            100.0,
+            SensorDeviceClass.ENERGY,
+            SensorStateClass.TOTAL,
+            UnitOfPower.KILO_WATT,
+            None,
+        ),
     ]
 
     async_add_entities(
@@ -569,6 +552,8 @@ async def async_setup_platform(
         + fake_solar_sensors
         + fake_battery_sensors
         + fake_temp_sensors
+        + fake_aux_sensors
+        + fake_load_sensors
     )
 
 

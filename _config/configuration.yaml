@@ -69,7 +69,7 @@ lovelace:
       filename: dashboards/security.yaml
     lovelace-custom-energy:
       mode: yaml
-      title: Custom Energy
+      title: 에너지
       icon: mdi:transmission-tower
       show_in_sidebar: true
       filename: dashboards/custom_energy.yaml

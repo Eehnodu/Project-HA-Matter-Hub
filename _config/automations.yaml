@@ -43,10 +43,10 @@
   alias: Update solar sensor data
   trigger:
     - platform: time_pattern
-      seconds: /10
+      hours: /1
   condition: []
   action:
-    service: python_script.update_solar
+    service: python_script.update_energy
     data: {}
 
 - id: "update_product_value"

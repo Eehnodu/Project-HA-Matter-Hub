@@ -1,23 +1,18 @@
 views:
-  - title: custom energy
+  - title: 에너지
     type: sidebar
     cards:
-      - type: entities
-        entities:
-          - entity: sensor.total_energy_kwh
-          - entity: sensor.total_energy_mwh
-          - entity: sensor.total_energy_mwh_cost
-            name: total energy mwh cost
-          - entity: sensor.total_gas_ft3
-          - entity: sensor.total_gas_m3
-          - entity: sensor.total_energy_mwh_cost
-            name: total gas m3 cost
-        view_layout:
-          position: sidebar
       - type: custom:plotly-graph
+        title: 에너지 사용량
         entities:
-          - sensor.fake_aux_1
-          - sensor.fake_aux_2
+          - entity: sensor.tia_fake_hub_fake_load1_power
+            name: 생산라인1 사용량
+          - entity: sensor.tia_fake_hub_fake_load2_power
+            name: 생산라인2 사용량
+          - entity: sensor.tia_fake_hub_fake_aux_1
+            name: 생산라인1 예비 전력
+          - entity: sensor.tia_fake_hub_fake_aux_2
+            name: 생산라인2 예비 전력
         refresh_interval: 10
         hours_to_show: 12h
         layout:
@@ -36,6 +31,51 @@ views:
                 - count: 7
                   step: day
         color_scheme: dutch_field
+      - type: entities
+        title: 에너지 사용량
+        entities:
+          - entity: sensor.tia_fake_hub_fake_load1_power
+            name: 생산라인1 사용량
+            icon: mdi:home-lightning-bolt-outline
+            card_mod:
+              style: |
+                :host {
+                  --card-mod-icon-color: orange;
+                }
+          - entity: sensor.tia_fake_hub_fake_load2_power
+            name: 생산라인2 사용량
+            icon: mdi:home-lightning-bolt-outline
+            card_mod:
+              style: |
+                :host {
+                  --card-mod-icon-color: orange;
+                }
+          - entity: sensor.tia_fake_hub_fake_sunsynk_aux_power
+            name: 예비전력 총량
+            icon: mdi:lightning-bolt-circle
+            card_mod:
+              style: |
+                :host {
+                  --card-mod-icon-color: orange;
+                }
+          - entity: sensor.tia_fake_hub_fake_aux_1
+            name: 생산라인1 서브 전력
+            icon: mdi:home-lightning-bolt
+            card_mod:
+              style: |
+                :host {
+                  --card-mod-icon-color: orange;
+                }
+          - entity: sensor.tia_fake_hub_fake_aux_2
+            name: 생산라인2 서브 전력
+            icon: mdi:home-lightning-bolt
+            card_mod:
+              style: |
+                :host {
+                  --card-mod-icon-color: orange;
+                }
+        view_layout:
+          position: sidebar
       - type: custom:sunsynk-power-flow-card
         cardstyle: full
         large_font: false
@@ -49,7 +89,7 @@ views:
         dynamic_line_width: false
         min_line_width: 1
         max_line_width: 4
-        wide: false
+        wide: true
         inverter:
           modern: true
           colour: grey
@@ -107,21 +147,22 @@ views:
           aux_colour: green
           aux_off_colour: red
           aux_loads: 2
-          aux_load1_name: Aux load 1
-          aux_load2_name: Aux load 2
+          aux_load1_name: 라인 1 서브 전력
+          aux_load2_name: 라인 2 서브 전력
           aux_load1_icon: mdi:air-filter
           aux_load2_icon: mdi:air-humidifier-off
           animation_speed: 8
           max_power: 8000
           additional_loads: 2
-          load2_name: Line 2
+          load2_name: 라인 2
           load1_icon: mdi:factory
           load2_icon: mdi:factory
           auto_scale: true
           dynamic_colour: true
           path_theshold: 100
           off_threshold: 0
-          load1_name: Line 1
+          load1_name: 라인 1
+          invert_flow: false
         grid:
           colour: "#5490c2"
           export_colour: brown
@@ -134,8 +175,8 @@ views:
           nonessential_name: Non Essential
           nonessential_icon: oven
           additional_loads: 2
-          load1_name: Load 1
-          load2_name: Load 2
+          load1_name: 라인 1
+          load2_name: 라인 2
           load1_icon: mdi:office-building-cog
           load2_icon: mdi:office-building-marker
           animation_speed: 8
@@ -151,7 +192,7 @@ views:
           day_grid_import_76: sensor.fake_day_grid_import
           day_grid_export_77: sensor.fake_day_grid_export
           day_pv_energy_108: sensor.fake_total_solar_sensor1
-          day_aux_energy: sensor.fake_sunsynk_day_aux_energy
+          day_aux_energy: sensor.tia_fake_hub_fake_sunsynk_day_aux_energy
           inverter_voltage_154: sensor.fake_sunsynk_inverter_voltage
           inverter_voltage_L2: null
           inverter_voltage_L3: null
@@ -173,17 +214,15 @@ views:
           pv2_current_112: sensor.tia_fake_hub_fake_solar_ampere_sensor2
           pv3_current_114: sensor.tia_fake_hub_fake_solar_ampere_sensor3
           pv4_current_116: sensor.tia_fake_hub_fake_solar_ampere_sensor4
-          battery_power_190: sensor.fake_battery_power_sensor
-          battery_voltage_183: sensor.fake_battery_voltage_sensor
-          battery_current_191: sensor.fake_battery_ampere_sensor
+          battery_power_190: sensor.tia_fake_hub_fake_battery_power_sensor
+          battery_voltage_183: sensor.tia_fake_hub_fake_battery_voltage_sensor
+          battery_current_191: sensor.tia_fake_hub_fake_battery_ampere_sensor
           battery_soc_184: sensor.fake_battery_soc_sensor
           radiator_temp_91: sensor.tia_fake_hub_fake_radiator_temperature_sensor
           dc_transformer_temp_90: sensor.tia_fake_hub_fake_dc_transformer_temperature_sensor
           essential_power: none
-          essential_load1: sensor.fake_tuya_geyser_current_consumption
-          essential_load2: sensor.fake_load2_power
-          essential_load1_extra: sensor.daily_geyser_energy
-          essential_load2_extra: sensor.load2_extra
+          essential_load1: sensor.tia_fake_hub_fake_load1_power
+          essential_load2: sensor.tia_fake_hub_fake_load2_power
           nonessential_power: none
           non_essential_load1: sensor.fake_nonessential1_power
           non_essential_load2: sensor.fake_nonessential2_power
@@ -192,7 +231,7 @@ views:
           grid_ct_power_L3: null
           grid_connected_status_194: binary_sensor.sunsynk_grid_connected_status
           inverter_status_59: sensor.sunsynk_overall_state
-          aux_power_166: sensor.fake_sunsynk_aux_power
+          aux_power_166: sensor.tia_fake_hub_fake_sunsynk_aux_power
           aux_connected_status: binary_sensor.sunsynk_aux_connected_status
           remaining_solar: sensor.solcast_forecast_remaining_today
           battery_temp_182: sensor.tia_fake_hub_fake_battery_battery_temperature
@@ -218,29 +257,81 @@ views:
           energy_cost_buy: sensor.fake_tibber_energy_cost_buy
           energy_cost_sell: sensor.tibber_energy_cost_sell
           solar_sell_247: switch.sunsynk_toggle_solar_sell
-          aux_load1: sensor.fake_aux_1
-          aux_load2: sensor.fake_aux_2
-          aux_load1_extra: sensor.fake_aux_1_extra
-          aux_load2_extra: sensor.fake_aux_2_extra
+          aux_load1: sensor.tia_fake_hub_fake_aux_1
+          aux_load2: sensor.tia_fake_hub_fake_aux_2
+          aux_load1_extra: sensor.tia_fake_hub_fake_aux_1_extra
+          aux_load2_extra: sensor.tia_fake_hub_fake_aux_2_extra
           load_power_L1: null
           load_power_L2: null
           load_power_L3: null
           total_pv_generation: null
           battery_status: null
+      - type: entities
+        title: 태양 에너지
+        entities:
+          - entity: sensor.fake_total_solar_sensor1
+            name: 태양에너지 총량
+            icon: mdi:battery-charging-100
+            card_mod:
+              style: |
+                :host {
+                  --card-mod-icon-color: green;
+                }
+          - entity: sensor.tia_fake_hub_fake_solar_power_sensor1
+            name: 태양 에너지1
+            icon: mdi:lightning-bolt
+            card_mod:
+              style: |
+                :host {
+                  --card-mod-icon-color: orange;
+                }
+          - entity: sensor.tia_fake_hub_fake_solar_power_sensor2
+            name: 태양 에너지2
+            icon: mdi:lightning-bolt
+            card_mod:
+              style: |
+                :host {
+                  --card-mod-icon-color: orange;
+                }
+          - entity: sensor.tia_fake_hub_fake_solar_power_sensor3
+            name: 태양 에너지3
+            icon: mdi:lightning-bolt
+            card_mod:
+              style: |
+                :host {
+                  --card-mod-icon-color: orange;
+                }
+          - entity: sensor.tia_fake_hub_fake_solar_power_sensor4
+            name: 태양 에너지4
+            icon: mdi:lightning-bolt
+            card_mod:
+              style: |
+                :host {
+                  --card-mod-icon-color: orange;
+                }
+        view_layout:
+          position: sidebar
       - type: custom:plotly-graph
         entities:
+          - entity: sensor.fake_total_solar_sensor1
+            name: Solar Energy
+            x: $ex ys
+            type: histogram
+          - entity: sensor.fake_day_grid_export
+            name: Grid Energy
+            x: $ex ys
+            type: histogram
           - entity: sensor.fake_sunsynk_day_aux_energy
+            name: Aux Energy
             x: $ex ys
             type: histogram
-          - entity: sensor.fake_aux_2_extra
-            x: $ex ys
-            type: histogram
-          - entity: sensor.fake_aux_2
+          - entity: sensor.fake_sunsynk_day_load_energy
+            name: Load Energy
             x: $ex ys
             type: histogram
         title: 테스트 중
         hours_to_show: 10d
-        raw_plotly_config: true
+        raw_plotly_config: false
         layout:
           margin:
             t: 0
