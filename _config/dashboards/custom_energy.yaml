@@ -192,7 +192,7 @@ views:
           day_grid_import_76: sensor.fake_day_grid_import
           day_grid_export_77: sensor.fake_day_grid_export
           day_pv_energy_108: sensor.fake_total_solar_sensor1
-          day_aux_energy: sensor.tia_fake_hub_fake_sunsynk_day_aux_energy
+          day_aux_energy: sensor.fake_sunsynk_day_aux_energy
           inverter_voltage_154: sensor.fake_sunsynk_inverter_voltage
           inverter_voltage_L2: null
           inverter_voltage_L3: null
